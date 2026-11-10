@@ -1,0 +1,136 @@
+{
+  "method": "blind-prefix-clustering + byte-variability segmentation",
+  "prefix_width": 3,
+  "clusters": [
+    {
+      "cluster_key_hex": "4d5347",
+      "cluster_key_ascii": "MSG",
+      "count": 192,
+      "min_len": 60,
+      "max_len": 305,
+      "segments": [
+        {
+          "offset": 0,
+          "len": 4,
+          "variation": "constant"
+        },
+        {
+          "offset": 4,
+          "len": 2,
+          "variation": "low_cardinality"
+        },
+        {
+          "offset": 6,
+          "len": 10,
+          "variation": "constant"
+        },
+        {
+          "offset": 16,
+          "len": 1,
+          "variation": "variable"
+        },
+        {
+          "offset": 17,
+          "len": 3,
+          "variation": "constant"
+        },
+        {
+          "offset": 20,
+          "len": 1,
+          "variation": "variable"
+        },
+        {
+          "offset": 21,
+          "len": 5,
+          "variation": "constant"
+        },
+        {
+          "offset": 26,
+          "len": 3,
+          "variation": "low_cardinality"
+        },
+        {
+          "offset": 29,
+          "len": 1,
+          "variation": "constant"
+        },
+        {
+          "offset": 30,
+          "len": 2,
+          "variation": "low_cardinality"
+        },
+        {
+          "offset": 32,
+          "len": 4,
+          "variation": "variable"
+        },
+        {
+          "offset": 36,
+          "len": 4,
+          "variation": "low_cardinality"
+        },
+        {
+          "offset": 40,
+          "len": 1,
+          "variation": "variable"
+        },
+        {
+          "offset": 41,
+          "len": 5,
+          "variation": "constant"
+        },
+        {
+          "offset": 46,
+          "len": 2,
+          "variation": "low_cardinality"
+        },
+        {
+          "offset": 48,
+          "len": 2,
+          "variation": "constant"
+        },
+        {
+          "offset": 50,
+          "len": 4,
+          "variation": "low_cardinality"
+        },
+        {
+          "offset": 54,
+          "len": 3,
+          "variation": "constant"
+        },
+        {
+          "offset": 57,
+          "len": 1,
+          "variation": "low_cardinality"
+        },
+        {
+          "offset": 58,
+          "len": 1,
+          "variation": "constant"
+        },
+        {
+          "offset": 59,
+          "len": 1,
+          "variation": "low_cardinality"
+        }
+      ],
+      "length_candidates": [
+        {
+          "offset": 4,
+          "len": 2,
+          "role": "length_candidate",
+          "endian": "little",
+          "match_rate": 1.0
+        },
+        {
+          "offset": 4,
+          "len": 4,
+          "role": "length_candidate",
+          "endian": "little",
+          "match_rate": 1.0
+        }
+      ]
+    }
+  ]
+}
