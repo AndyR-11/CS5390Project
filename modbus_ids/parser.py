@@ -1,6 +1,6 @@
 """
 Parse a raw Modbus/TCP message into a dict of field values, using a
-schema (see schema.py). Works on any schema with the same shape,
+schema (schema.py). Works on any schema with the same shape,
 whether it's hand-written or produced by your inference code.
 """
 
