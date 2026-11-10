@@ -26,9 +26,22 @@ whole chain's "no spec used" discipline intact end to end.
 
 import argparse
 import json
+import os
+import sys
 
-from modbus_ids.pcap_loader import load_pcap
-from clustering import MessageTypeClusterer, group_messages
+# Lets this script find paola_t1/ regardless of which folder you run it
+# from (repo root or modbus_ids/ itself) -- paola_t1 is a SIBLING of
+# modbus_ids, not something on the Python path by default, which is
+# exactly the ModuleNotFoundError you'd otherwise hit running this from
+# inside modbus_ids.
+_THIS_DIR = os.path.dirname(os.path.abspath(__file__))
+_REPO_ROOT = os.path.dirname(_THIS_DIR)
+for _p in (_THIS_DIR, _REPO_ROOT):
+    if _p not in sys.path:
+        sys.path.insert(0, _p)
+
+from pcap_loader import load_pcap
+from paola_t1.clustering import MessageTypeClusterer, group_messages
 from infer_boundaries import infer_boundaries
 from infer_merge import merge_fields
 from infer_roles import assign_roles
