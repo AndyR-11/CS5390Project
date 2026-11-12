@@ -1,0 +1,352 @@
+{
+  "seed": 5390,
+  "note": "Function code oracle is evaluation-only; not attack detection accuracy.",
+  "experiments": [
+    {
+      "dataset": "synthetic",
+      "entropy": 0.75,
+      "model": {
+        "method": "length + learned low-entropy categorical byte signature",
+        "parameters": {
+          "max_values": 16,
+          "max_entropy": 0.75,
+          "min_samples": 8
+        },
+        "offsets_by_length": {
+          "12": [
+            10
+          ]
+        },
+        "clusters": [
+          {
+            "id": 0,
+            "length": 12,
+            "signature": [
+              0
+            ]
+          },
+          {
+            "id": 1,
+            "length": 12,
+            "signature": [
+              1
+            ]
+          }
+        ],
+        "unknown_id": -1
+      },
+      "held_out": {
+        "count": 1200,
+        "known_coverage": 1.0,
+        "purity_known_only": 0.5833333333333334,
+        "pair_precision_known_only": 0.507700675457609,
+        "pair_recall_known_only": 1.0,
+        "cluster_vs_function_code": {
+          "0": {
+            "3": 601,
+            "4": 500
+          },
+          "1": {
+            "6": 99
+          }
+        }
+      }
+    },
+    {
+      "dataset": "synthetic",
+      "entropy": 1.5,
+      "model": {
+        "method": "length + learned low-entropy categorical byte signature",
+        "parameters": {
+          "max_values": 16,
+          "max_entropy": 1.5,
+          "min_samples": 8
+        },
+        "offsets_by_length": {
+          "12": [
+            7,
+            10
+          ]
+        },
+        "clusters": [
+          {
+            "id": 0,
+            "length": 12,
+            "signature": [
+              3,
+              0
+            ]
+          },
+          {
+            "id": 1,
+            "length": 12,
+            "signature": [
+              4,
+              0
+            ]
+          },
+          {
+            "id": 2,
+            "length": 12,
+            "signature": [
+              6,
+              1
+            ]
+          }
+        ],
+        "unknown_id": -1
+      },
+      "held_out": {
+        "count": 1200,
+        "known_coverage": 1.0,
+        "purity_known_only": 1.0,
+        "pair_precision_known_only": 1.0,
+        "pair_recall_known_only": 1.0,
+        "cluster_vs_function_code": {
+          "0": {
+            "3": 601
+          },
+          "1": {
+            "4": 500
+          },
+          "2": {
+            "6": 99
+          }
+        }
+      }
+    },
+    {
+      "dataset": "synthetic",
+      "entropy": 2.5,
+      "model": {
+        "method": "length + learned low-entropy categorical byte signature",
+        "parameters": {
+          "max_values": 16,
+          "max_entropy": 2.5,
+          "min_samples": 8
+        },
+        "offsets_by_length": {
+          "12": [
+            7,
+            10
+          ]
+        },
+        "clusters": [
+          {
+            "id": 0,
+            "length": 12,
+            "signature": [
+              3,
+              0
+            ]
+          },
+          {
+            "id": 1,
+            "length": 12,
+            "signature": [
+              4,
+              0
+            ]
+          },
+          {
+            "id": 2,
+            "length": 12,
+            "signature": [
+              6,
+              1
+            ]
+          }
+        ],
+        "unknown_id": -1
+      },
+      "held_out": {
+        "count": 1200,
+        "known_coverage": 1.0,
+        "purity_known_only": 1.0,
+        "pair_precision_known_only": 1.0,
+        "pair_recall_known_only": 1.0,
+        "cluster_vs_function_code": {
+          "0": {
+            "3": 601
+          },
+          "1": {
+            "4": 500
+          },
+          "2": {
+            "6": 99
+          }
+        }
+      }
+    },
+    {
+      "dataset": "real_modbus",
+      "entropy": 0.75,
+      "model": {
+        "method": "length + learned low-entropy categorical byte signature",
+        "parameters": {
+          "max_values": 16,
+          "max_entropy": 0.75,
+          "min_samples": 8
+        },
+        "offsets_by_length": {
+          "12": [
+            7,
+            9,
+            10
+          ]
+        },
+        "clusters": [
+          {
+            "id": 0,
+            "length": 12,
+            "signature": [
+              3,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 1,
+            "length": 12,
+            "signature": [
+              6,
+              1,
+              1
+            ]
+          }
+        ],
+        "unknown_id": -1
+      },
+      "held_out": {
+        "count": 595,
+        "known_coverage": 1.0,
+        "purity_known_only": 1.0,
+        "pair_precision_known_only": 1.0,
+        "pair_recall_known_only": 1.0,
+        "cluster_vs_function_code": {
+          "0": {
+            "3": 548
+          },
+          "1": {
+            "6": 47
+          }
+        }
+      }
+    },
+    {
+      "dataset": "real_modbus",
+      "entropy": 1.5,
+      "model": {
+        "method": "length + learned low-entropy categorical byte signature",
+        "parameters": {
+          "max_values": 16,
+          "max_entropy": 1.5,
+          "min_samples": 8
+        },
+        "offsets_by_length": {
+          "12": [
+            7,
+            9,
+            10
+          ]
+        },
+        "clusters": [
+          {
+            "id": 0,
+            "length": 12,
+            "signature": [
+              3,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 1,
+            "length": 12,
+            "signature": [
+              6,
+              1,
+              1
+            ]
+          }
+        ],
+        "unknown_id": -1
+      },
+      "held_out": {
+        "count": 595,
+        "known_coverage": 1.0,
+        "purity_known_only": 1.0,
+        "pair_precision_known_only": 1.0,
+        "pair_recall_known_only": 1.0,
+        "cluster_vs_function_code": {
+          "0": {
+            "3": 548
+          },
+          "1": {
+            "6": 47
+          }
+        }
+      }
+    },
+    {
+      "dataset": "real_modbus",
+      "entropy": 2.5,
+      "model": {
+        "method": "length + learned low-entropy categorical byte signature",
+        "parameters": {
+          "max_values": 16,
+          "max_entropy": 2.5,
+          "min_samples": 8
+        },
+        "offsets_by_length": {
+          "12": [
+            7,
+            9,
+            10
+          ]
+        },
+        "clusters": [
+          {
+            "id": 0,
+            "length": 12,
+            "signature": [
+              3,
+              0,
+              0
+            ]
+          },
+          {
+            "id": 1,
+            "length": 12,
+            "signature": [
+              6,
+              1,
+              1
+            ]
+          }
+        ],
+        "unknown_id": -1
+      },
+      "held_out": {
+        "count": 595,
+        "known_coverage": 1.0,
+        "purity_known_only": 1.0,
+        "pair_precision_known_only": 1.0,
+        "pair_recall_known_only": 1.0,
+        "cluster_vs_function_code": {
+          "0": {
+            "3": 548
+          },
+          "1": {
+            "6": 47
+          }
+        }
+      }
+    }
+  ],
+  "real_modbus_framing_check": {
+    "payloads": 1982,
+    "mbap_length_mismatch": 0,
+    "note": "Necessary length check only; does not prove absence of retransmissions."
+  }
+}

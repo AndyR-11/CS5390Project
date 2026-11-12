@@ -1,4 +1,4 @@
-OPC UA blind PRE starter
+OPC UA blind
 
 Purpose
 -------

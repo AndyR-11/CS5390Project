@@ -1,0 +1,1099 @@
+{
+  "source": "tmp\\randal_reference\\pcaps\\opcua\\opc_normal_only.pcapng",
+  "port": 4840,
+  "unit": "client-to-server TCP payload (no stream reassembly)",
+  "warning": "Cluster novelty is not proof of an attack or a semantic type.",
+  "model": {
+    "method": "length + learned low-entropy categorical byte signature",
+    "parameters": {
+      "max_values": 16,
+      "max_entropy": 1.5,
+      "min_samples": 8
+    },
+    "offsets_by_length": {
+      "93": [
+        36,
+        76,
+        78
+      ]
+    },
+    "clusters": [
+      {
+        "id": 0,
+        "length": 93,
+        "signature": [
+          150,
+          0,
+          8
+        ]
+      },
+      {
+        "id": 1,
+        "length": 93,
+        "signature": [
+          150,
+          2,
+          0
+        ]
+      },
+      {
+        "id": 2,
+        "length": 93,
+        "signature": [
+          151,
+          0,
+          8
+        ]
+      },
+      {
+        "id": 3,
+        "length": 93,
+        "signature": [
+          151,
+          2,
+          0
+        ]
+      }
+    ],
+    "unknown_id": -1
+  },
+  "train": {
+    "count": 136,
+    "cluster_counts": {
+      "-1": 11,
+      "0": 22,
+      "1": 44,
+      "2": 20,
+      "3": 39
+    },
+    "unknown_fraction": 0.08088235294117647
+  },
+  "held_out": {
+    "count": 59,
+    "cluster_counts": {
+      "-1": 3,
+      "2": 19,
+      "3": 37
+    },
+    "unknown_fraction": 0.05084745762711865
+  },
+  "assignments": [
+    {
+      "packet_index": 4,
+      "cluster_id": -1,
+      "split": "train"
+    },
+    {
+      "packet_index": 8,
+      "cluster_id": -1,
+      "split": "train"
+    },
+    {
+      "packet_index": 12,
+      "cluster_id": -1,
+      "split": "train"
+    },
+    {
+      "packet_index": 16,
+      "cluster_id": -1,
+      "split": "train"
+    },
+    {
+      "packet_index": 20,
+      "cluster_id": 0,
+      "split": "train"
+    },
+    {
+      "packet_index": 24,
+      "cluster_id": -1,
+      "split": "train"
+    },
+    {
+      "packet_index": 28,
+      "cluster_id": -1,
+      "split": "train"
+    },
+    {
+      "packet_index": 32,
+      "cluster_id": -1,
+      "split": "train"
+    },
+    {
+      "packet_index": 36,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 40,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 44,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 48,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 52,
+      "cluster_id": 0,
+      "split": "train"
+    },
+    {
+      "packet_index": 56,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 60,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 64,
+      "cluster_id": 0,
+      "split": "train"
+    },
+    {
+      "packet_index": 68,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 72,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 76,
+      "cluster_id": -1,
+      "split": "train"
+    },
+    {
+      "packet_index": 80,
+      "cluster_id": 0,
+      "split": "train"
+    },
+    {
+      "packet_index": 84,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 88,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 92,
+      "cluster_id": 0,
+      "split": "train"
+    },
+    {
+      "packet_index": 96,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 100,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 104,
+      "cluster_id": 0,
+      "split": "train"
+    },
+    {
+      "packet_index": 108,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 112,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 116,
+      "cluster_id": 0,
+      "split": "train"
+    },
+    {
+      "packet_index": 120,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 124,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 128,
+      "cluster_id": 0,
+      "split": "train"
+    },
+    {
+      "packet_index": 132,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 136,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 140,
+      "cluster_id": 0,
+      "split": "train"
+    },
+    {
+      "packet_index": 144,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 148,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 152,
+      "cluster_id": 0,
+      "split": "train"
+    },
+    {
+      "packet_index": 156,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 160,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 164,
+      "cluster_id": 0,
+      "split": "train"
+    },
+    {
+      "packet_index": 168,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 172,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 176,
+      "cluster_id": 0,
+      "split": "train"
+    },
+    {
+      "packet_index": 180,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 184,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 188,
+      "cluster_id": 0,
+      "split": "train"
+    },
+    {
+      "packet_index": 192,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 196,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 200,
+      "cluster_id": -1,
+      "split": "train"
+    },
+    {
+      "packet_index": 204,
+      "cluster_id": 0,
+      "split": "train"
+    },
+    {
+      "packet_index": 208,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 212,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 216,
+      "cluster_id": 0,
+      "split": "train"
+    },
+    {
+      "packet_index": 220,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 224,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 228,
+      "cluster_id": 0,
+      "split": "train"
+    },
+    {
+      "packet_index": 232,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 236,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 240,
+      "cluster_id": 0,
+      "split": "train"
+    },
+    {
+      "packet_index": 244,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 248,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 252,
+      "cluster_id": 0,
+      "split": "train"
+    },
+    {
+      "packet_index": 256,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 260,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 264,
+      "cluster_id": 0,
+      "split": "train"
+    },
+    {
+      "packet_index": 268,
+      "cluster_id": 0,
+      "split": "train"
+    },
+    {
+      "packet_index": 272,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 276,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 280,
+      "cluster_id": 0,
+      "split": "train"
+    },
+    {
+      "packet_index": 284,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 288,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 292,
+      "cluster_id": -1,
+      "split": "train"
+    },
+    {
+      "packet_index": 296,
+      "cluster_id": 0,
+      "split": "train"
+    },
+    {
+      "packet_index": 300,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 304,
+      "cluster_id": 1,
+      "split": "train"
+    },
+    {
+      "packet_index": 308,
+      "cluster_id": 2,
+      "split": "train"
+    },
+    {
+      "packet_index": 312,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 316,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 320,
+      "cluster_id": 2,
+      "split": "train"
+    },
+    {
+      "packet_index": 324,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 328,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 332,
+      "cluster_id": 2,
+      "split": "train"
+    },
+    {
+      "packet_index": 336,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 340,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 344,
+      "cluster_id": 2,
+      "split": "train"
+    },
+    {
+      "packet_index": 348,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 352,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 356,
+      "cluster_id": 2,
+      "split": "train"
+    },
+    {
+      "packet_index": 360,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 364,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 368,
+      "cluster_id": 2,
+      "split": "train"
+    },
+    {
+      "packet_index": 372,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 376,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 380,
+      "cluster_id": 2,
+      "split": "train"
+    },
+    {
+      "packet_index": 384,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 388,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 392,
+      "cluster_id": 2,
+      "split": "train"
+    },
+    {
+      "packet_index": 396,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 400,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 404,
+      "cluster_id": -1,
+      "split": "train"
+    },
+    {
+      "packet_index": 408,
+      "cluster_id": 2,
+      "split": "train"
+    },
+    {
+      "packet_index": 412,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 416,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 420,
+      "cluster_id": 2,
+      "split": "train"
+    },
+    {
+      "packet_index": 424,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 428,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 432,
+      "cluster_id": 2,
+      "split": "train"
+    },
+    {
+      "packet_index": 436,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 440,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 444,
+      "cluster_id": 2,
+      "split": "train"
+    },
+    {
+      "packet_index": 448,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 452,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 456,
+      "cluster_id": 2,
+      "split": "train"
+    },
+    {
+      "packet_index": 460,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 464,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 468,
+      "cluster_id": 2,
+      "split": "train"
+    },
+    {
+      "packet_index": 472,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 476,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 480,
+      "cluster_id": 2,
+      "split": "train"
+    },
+    {
+      "packet_index": 484,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 488,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 492,
+      "cluster_id": 2,
+      "split": "train"
+    },
+    {
+      "packet_index": 496,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 500,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 504,
+      "cluster_id": 2,
+      "split": "train"
+    },
+    {
+      "packet_index": 508,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 512,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 516,
+      "cluster_id": 2,
+      "split": "train"
+    },
+    {
+      "packet_index": 520,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 524,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 528,
+      "cluster_id": 2,
+      "split": "train"
+    },
+    {
+      "packet_index": 532,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 536,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 540,
+      "cluster_id": 2,
+      "split": "train"
+    },
+    {
+      "packet_index": 544,
+      "cluster_id": 3,
+      "split": "train"
+    },
+    {
+      "packet_index": 548,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 552,
+      "cluster_id": 2,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 556,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 560,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 564,
+      "cluster_id": 2,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 568,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 572,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 576,
+      "cluster_id": 2,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 580,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 584,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 588,
+      "cluster_id": 2,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 592,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 596,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 600,
+      "cluster_id": 2,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 604,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 608,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 612,
+      "cluster_id": 2,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 616,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 620,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 624,
+      "cluster_id": -1,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 628,
+      "cluster_id": 2,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 632,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 636,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 640,
+      "cluster_id": 2,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 644,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 648,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 652,
+      "cluster_id": 2,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 656,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 660,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 664,
+      "cluster_id": 2,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 668,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 672,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 676,
+      "cluster_id": 2,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 680,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 684,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 688,
+      "cluster_id": 2,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 692,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 696,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 700,
+      "cluster_id": 2,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 704,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 708,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 712,
+      "cluster_id": 2,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 716,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 720,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 724,
+      "cluster_id": 2,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 728,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 732,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 736,
+      "cluster_id": 2,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 740,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 744,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 748,
+      "cluster_id": 2,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 752,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 756,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 760,
+      "cluster_id": 2,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 764,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 768,
+      "cluster_id": 3,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 772,
+      "cluster_id": 2,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 776,
+      "cluster_id": -1,
+      "split": "held_out"
+    },
+    {
+      "packet_index": 780,
+      "cluster_id": -1,
+      "split": "held_out"
+    }
+  ],
+  "additional_captures": [
+    {
+      "source": "tmp\\randal_reference\\pcaps\\opcua\\opc_invalid_node_only.pcapng",
+      "count": 8,
+      "cluster_counts": {
+        "-1": 8
+      },
+      "unknown_fraction": 1.0
+    },
+    {
+      "source": "tmp\\randal_reference\\pcaps\\opcua\\opc_write_no_read_only.pcapng",
+      "count": 11,
+      "cluster_counts": {
+        "-1": 11
+      },
+      "unknown_fraction": 1.0
+    },
+    {
+      "source": "tmp\\randal_reference\\pcaps\\opcua\\opc_value_jump_only.pcapng",
+      "count": 12,
+      "cluster_counts": {
+        "-1": 12
+      },
+      "unknown_fraction": 1.0
+    },
+    {
+      "source": "tmp\\randal_reference\\pcaps\\opcua\\opc_read_flood_only.pcapng",
+      "count": 60,
+      "cluster_counts": {
+        "-1": 60
+      },
+      "unknown_fraction": 1.0
+    },
+    {
+      "source": "tmp\\randal_reference\\pcaps\\opcua\\opc_session_flood_only.pcapng",
+      "count": 120,
+      "cluster_counts": {
+        "-1": 120
+      },
+      "unknown_fraction": 1.0
+    }
+  ]
+}

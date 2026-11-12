@@ -1,0 +1,46 @@
+PROVISIONAL: unchanged existing pipeline, heuristic port-based labels, hardcoded schema.
+illegal_func.pcapng: 12 messages, 1 labeled attack:illegal_func, 11 labeled normal
+bad_length.pcapng: 14 messages, 1 labeled attack:bad_length, 13 labeled normal
+out_of_range.pcapng: 12 messages, 1 labeled attack:out_of_range, 11 labeled normal
+replay.pcapng: 12 messages, 2 labeled attack:replay, 10 labeled normal
+read_flood.pcapng: 64 messages, 50 labeled attack:read_flood, 14 labeled normal
+write_no_read.pcapng: 13 messages, 1 labeled attack:write_no_read, 12 labeled normal
+value_jump.pcapng: 15 messages, 2 labeled attack:value_jump, 13 labeled normal
+
+Training on 1387 normal messages, testing false positives on 595 held-out normal messages, evaluating detection on 142 messages from attack captures.
+
+Structure profile: StructProfile(proto_id=0, funcs={3, 6}, addr_range={3: (0, 0), 6: (1, 1)}, qty_range={3: (2, 2)})
+Behavioral profile: BehavioralProfile(max_write_step=28, read_before_write_sec=5.0)
+
+--- Structure-based detector ---
+attack type          detected   missed     recall  
+bad_length           1          0          1.00    
+illegal_func         1          0          1.00    
+out_of_range         1          0          1.00    
+read_flood           0          50         0.00    
+replay               0          2          0.00    
+value_jump           1          1          0.50    
+write_no_read        0          1          0.00    
+false positive rate (on clean traffic): 0.000
+
+--- Statistics-only baseline ---
+attack type          detected   missed     recall  
+bad_length           0          1          0.00    
+illegal_func         0          1          0.00    
+out_of_range         0          1          0.00    
+read_flood           1          0          1.00    
+replay               0          1          0.00    
+value_jump           0          1          0.00    
+write_no_read        0          1          0.00    
+false positive rate (on clean traffic): 0.025
+
+--- Behavioral detector ---
+attack type          detected   missed     recall  
+bad_length           0          1          0.00    
+illegal_func         0          1          0.00    
+out_of_range         0          1          0.00    
+read_flood           0          50         0.00    
+replay               0          2          0.00    
+value_jump           1          1          0.50    
+write_no_read        1          0          1.00    
+false positive rate (on clean traffic): 0.082

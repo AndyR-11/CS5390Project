@@ -1,0 +1,21 @@
+{
+  "main_commit": "bd6fc660a4a01c2195f69d16b53e81052374fb39",
+  "opc_commit": "14b497c18c7f70f0b701253dc0073921b4c1eafa",
+  "python": "3.12.5 (tags/v3.12.5:ff3bc82, Aug  6 2024, 20:45:27) [MSC v.1940 64 bit (AMD64)]",
+  "sha256": {
+    "modbus_ids\\bad_length.pcapng": "d6fd2418f93cbe6c363bc6daff1134cbf10bb990a71332eb1df5779a5eff65f3",
+    "modbus_ids\\illegal_func.pcapng": "9311e94d6c44887b37321cae8bed61c697039299e6ee997ce20f7b57ff769075",
+    "modbus_ids\\normal_traffic.pcapng": "dfc52b8ad90c2650bda0dfef8c7739fde8f7bdfbe55e95314f48b06f63e76056",
+    "modbus_ids\\out_of_range.pcapng": "dc4310f1d4d5d75be8aee769959e732178c8c5256cd7355c7b69e1f45f22bdf7",
+    "modbus_ids\\read_flood.pcapng": "da184821398cacdbbdfee59f749dd1073c7dc2d7c7934b5f3fce3e07d8740adb",
+    "modbus_ids\\replay.pcapng": "539212f02318fdac0cfd943e300dfe01b212116c6909de202c6b8ea91d90e82c",
+    "modbus_ids\\value_jump.pcapng": "a8adb2ec12eab1aead8fc036c522556b509ec284f296c38b75fda46486fee6cd",
+    "modbus_ids\\write_no_read.pcapng": "684249a4bf7c5eddc4dbf580daf2d1d69534deb0bb7474fa74c7c0bd7947d5d3",
+    "tmp\\randal_reference\\pcaps\\opcua\\opc_invalid_node_only.pcapng": "55eba80ed3950215d700d4165b9921dfbd4ecc3dc2b1a4da2b7b51e68269b27e",
+    "tmp\\randal_reference\\pcaps\\opcua\\opc_normal_only.pcapng": "aae7c43d5e36697a6c718d7a105d19358259043a67769887f287b348857b8ec6",
+    "tmp\\randal_reference\\pcaps\\opcua\\opc_read_flood_only.pcapng": "34913ec3a8d57b0d7d330e732634301df212ce3979dbb63b994a6dfcdd4cd65b",
+    "tmp\\randal_reference\\pcaps\\opcua\\opc_session_flood_only.pcapng": "51914124451f300a08f1c53096e00a88e3d8bfef6de9c967fa0cc288aec3f1d7",
+    "tmp\\randal_reference\\pcaps\\opcua\\opc_value_jump_only.pcapng": "8d5c01b6b3708dfb5d66f861570d07490069bd650d6ebb534b48beb28e35c861",
+    "tmp\\randal_reference\\pcaps\\opcua\\opc_write_no_read_only.pcapng": "09b94ddbd39cf0dd4fde1496fdaa680860a6ba87dc5b016e2b1b63e72c56e21f"
+  }
+}
