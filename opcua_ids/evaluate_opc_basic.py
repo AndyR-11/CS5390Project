@@ -20,11 +20,28 @@ def structural_alert(raw, schema, prefix_width):
     return None
 
 
-def request_rate(msgs):
-    if len(msgs) < 2:
+def is_opc_msg(m):
+    raw = m['raw']
+    return len(raw) >= 3 and raw[:3] == b'MSG'
+
+
+def peak_msg_rate(msgs, window=1.0):
+    msg_times = [m['ts'] for m in msgs if is_opc_msg(m)]
+
+    if not msg_times:
         return 0.0
-    dt = max(1e-9, msgs[-1]['ts'] - msgs[0]['ts'])
-    return len(msgs) / dt
+
+    left = 0
+    peak = 0
+
+    for right in range(len(msg_times)):
+        while msg_times[right] - msg_times[left] > window:
+            left += 1
+
+        count = right - left + 1
+        peak = max(peak, count)
+
+    return peak / window
 
 
 def main():
@@ -40,7 +57,7 @@ def main():
     prefix_width = int(schema.get('prefix_width', 3))
 
     normal = load_tcp_payloads(args.normal_pcap, args.port)
-    normal_rate = request_rate(normal)
+    normal_rate = peak_msg_rate(normal)
     threshold = normal_rate * args.rate_multiplier
 
     print(f'Normal request rate: {normal_rate:.2f} req/s')
@@ -50,7 +67,7 @@ def main():
         msgs = load_tcp_payloads(p, args.port, label='attack')
         struct_reasons = [structural_alert(m['raw'], schema, prefix_width) for m in msgs]
         struct_hits = sum(r is not None for r in struct_reasons)
-        rate = request_rate(msgs)
+        rate = peak_msg_rate(msgs)
         stats_hit = rate > threshold if threshold > 0 else False
 
         print('\n' + p)

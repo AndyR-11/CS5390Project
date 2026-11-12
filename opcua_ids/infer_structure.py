@@ -51,7 +51,7 @@ def _find_length_candidates(raw_messages, min_len):
     return cands
 
 
-def infer(messages, prefix_width=3, min_cluster_size=2):
+def infer(messages, prefix_width=3, min_cluster_size=1):
     # No protocol knowledge: cluster by the first N raw bytes only.
     clusters = defaultdict(list)
     for m in messages:
