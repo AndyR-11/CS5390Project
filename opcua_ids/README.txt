@@ -1,52 +1,25 @@
-OPC UA blind
+OPC UA IDS
 
 Purpose
--------
-Keep existing Modbus IDS untouched. This folder creates a parallel,
-protocol-generic pipeline for your OPC UA captures:
 
-  OPC-only PCAP -> generic TCP payload loader -> blind prefix clustering
-  -> byte-variability field segmentation -> inferred JSON schema
-  -> basic structure/statistics evaluation
+This folder provides the OPC UA side of the project and follows the same
+general detector organization used by modbus_ids.
 
-The inference code is intentionally not given OPC UA field names.
-It works only from raw bytes and a configured TCP server port.
+The OPC UA lab uses unencrypted OPC UA traffic with SecurityPolicy None
+on TCP port 4840.
 
-Install
--------
-python3 -m pip install scapy
+The detector pipeline includes:
 
-Run inference on NORMAL traffic first
--------------------------------------
-python3 run_opc_inference.py \
-  ../pcaps/opcua/opc_normal_only.pcapng \
-  --port 4840 \
-  --out opcua_inferred_schema.json
+Structure-based detection
 
-Then evaluate attack captures
------------------------------
-python3 evaluate_opc_basic.py \
-  opcua_inferred_schema.json \
-  ../pcaps/opcua/opc_normal_only.pcapng \
-  ../pcaps/opcua/opc_invalid_node_only.pcapng \
-  ../pcaps/opcua/opc_write_no_read_only.pcapng \
-  ../pcaps/opcua/opc_value_jump_only.pcapng \
-  ../pcaps/opcua/opc_read_flood_only.pcapng \
-  ../pcaps/opcua/opc_session_flood_only.pcapng \
-  --port 4840
+Statistics-only detection
 
-What this first version can and cannot do
------------------------------------------
-CAN:
-- discover repeated message prefixes without protocol field names
-- segment constant / low-cardinality / variable byte regions
-- find likely length fields by checking 2/4-byte values against raw message length
-- flag unseen message clusters and abnormal message lengths
-- flag high request-rate captures
+Behavioral detection
 
-CANNOT YET:
-- understand OPC UA NodeIds / service semantics
-- recognize write_no_read as a semantic sequence violation
-- recognize value_jump from decoded OPC UA values
+The normal OPC UA capture is divided chronologically into:
 
-Those semantic detectors are the next phase after the blind structural baseline.
+first 70% for training
+
+final 30% for held-out false-positive evaluation
+
+Each attack is stored in a separate OPC-only PCAP capture.

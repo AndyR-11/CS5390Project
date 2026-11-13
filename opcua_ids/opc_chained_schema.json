@@ -1,0 +1,281 @@
+{
+  "t1": {
+    "method": "length + learned low-entropy categorical byte signature",
+    "parameters": {
+      "max_values": 16,
+      "max_entropy": 1.5,
+      "min_samples": 8
+    },
+    "offsets_by_length": {
+      "93": [
+        36,
+        76,
+        78
+      ]
+    },
+    "clusters": [
+      {
+        "id": 0,
+        "length": 93,
+        "signature": [
+          150,
+          0,
+          8
+        ]
+      },
+      {
+        "id": 1,
+        "length": 93,
+        "signature": [
+          150,
+          2,
+          0
+        ]
+      },
+      {
+        "id": 2,
+        "length": 93,
+        "signature": [
+          151,
+          0,
+          8
+        ]
+      },
+      {
+        "id": 3,
+        "length": 93,
+        "signature": [
+          151,
+          2,
+          0
+        ]
+      }
+    ],
+    "unknown_id": -1
+  },
+  "t2_per_cluster": {
+    "unassigned": {
+      "count": 14
+    },
+    "0": {
+      "count": 22,
+      "min_len": 93,
+      "max_len": 93,
+      "schema": [
+        {
+          "name": "field_0",
+          "offset": 0,
+          "len": 16,
+          "role": "constant"
+        },
+        {
+          "name": "field_1",
+          "offset": 16,
+          "len": 4,
+          "role": "counter"
+        },
+        {
+          "name": "field_2",
+          "offset": 20,
+          "len": 1,
+          "role": "counter"
+        },
+        {
+          "name": "field_3",
+          "offset": 21,
+          "len": 11,
+          "role": "constant"
+        },
+        {
+          "name": "field_4",
+          "offset": 32,
+          "len": 4,
+          "role": "variable"
+        },
+        {
+          "name": "field_5",
+          "offset": 36,
+          "len": 4,
+          "role": "constant"
+        },
+        {
+          "name": "field_6",
+          "offset": 40,
+          "len": 1,
+          "role": "counter"
+        },
+        {
+          "name": "field_7",
+          "offset": 41,
+          "len": 52,
+          "role": "counter"
+        }
+      ]
+    },
+    "1": {
+      "count": 44,
+      "min_len": 93,
+      "max_len": 93,
+      "schema": [
+        {
+          "name": "field_0",
+          "offset": 0,
+          "len": 16,
+          "role": "constant"
+        },
+        {
+          "name": "field_1",
+          "offset": 16,
+          "len": 4,
+          "role": "counter"
+        },
+        {
+          "name": "field_2",
+          "offset": 20,
+          "len": 1,
+          "role": "counter"
+        },
+        {
+          "name": "field_3",
+          "offset": 21,
+          "len": 11,
+          "role": "constant"
+        },
+        {
+          "name": "field_4",
+          "offset": 32,
+          "len": 4,
+          "role": "variable"
+        },
+        {
+          "name": "field_5",
+          "offset": 36,
+          "len": 4,
+          "role": "constant"
+        },
+        {
+          "name": "field_6",
+          "offset": 40,
+          "len": 1,
+          "role": "counter"
+        },
+        {
+          "name": "field_7",
+          "offset": 41,
+          "len": 52,
+          "role": "low_variability"
+        }
+      ]
+    },
+    "2": {
+      "count": 39,
+      "min_len": 93,
+      "max_len": 93,
+      "schema": [
+        {
+          "name": "field_0",
+          "offset": 0,
+          "len": 16,
+          "role": "constant"
+        },
+        {
+          "name": "field_1",
+          "offset": 16,
+          "len": 4,
+          "role": "counter"
+        },
+        {
+          "name": "field_2",
+          "offset": 20,
+          "len": 1,
+          "role": "counter"
+        },
+        {
+          "name": "field_3",
+          "offset": 21,
+          "len": 11,
+          "role": "constant"
+        },
+        {
+          "name": "field_4",
+          "offset": 32,
+          "len": 4,
+          "role": "variable"
+        },
+        {
+          "name": "field_5",
+          "offset": 36,
+          "len": 4,
+          "role": "constant"
+        },
+        {
+          "name": "field_6",
+          "offset": 40,
+          "len": 1,
+          "role": "counter"
+        },
+        {
+          "name": "field_7",
+          "offset": 41,
+          "len": 52,
+          "role": "constant"
+        }
+      ]
+    },
+    "3": {
+      "count": 76,
+      "min_len": 93,
+      "max_len": 93,
+      "schema": [
+        {
+          "name": "field_0",
+          "offset": 0,
+          "len": 16,
+          "role": "constant"
+        },
+        {
+          "name": "field_1",
+          "offset": 16,
+          "len": 4,
+          "role": "counter"
+        },
+        {
+          "name": "field_2",
+          "offset": 20,
+          "len": 1,
+          "role": "counter"
+        },
+        {
+          "name": "field_3",
+          "offset": 21,
+          "len": 11,
+          "role": "constant"
+        },
+        {
+          "name": "field_4",
+          "offset": 32,
+          "len": 4,
+          "role": "variable"
+        },
+        {
+          "name": "field_5",
+          "offset": 36,
+          "len": 4,
+          "role": "constant"
+        },
+        {
+          "name": "field_6",
+          "offset": 40,
+          "len": 1,
+          "role": "counter"
+        },
+        {
+          "name": "field_7",
+          "offset": 41,
+          "len": 52,
+          "role": "low_variability"
+        }
+      ]
+    }
+  }
+}
