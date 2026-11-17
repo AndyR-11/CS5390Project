@@ -1,0 +1,29 @@
+{
+  "seed": 3,
+  "target_port": 5020,
+  "n_clients": 3,
+  "clients": [
+    {
+      "name": "client0",
+      "role": "normal",
+      "local_port": 38204
+    },
+    {
+      "name": "client1",
+      "role": "normal",
+      "local_port": 38190
+    },
+    {
+      "name": "client2",
+      "role": "attacker",
+      "local_port": 38182
+    }
+  ],
+  "attack": {
+    "name": "read_flood",
+    "attacker_client": "client2",
+    "start_ts": 1794425076.0085258,
+    "end_ts": 1794425077.043919
+  },
+  "run_start_ts": 1794425066.9432538
+}

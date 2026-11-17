@@ -1,0 +1,70 @@
+{
+  "recall": {
+    "invalid_node": {
+      "structure": 1.0,
+      "statistics": 0.0,
+      "behavioral": 0.0
+    },
+    "write_no_read": {
+      "structure": 0.0,
+      "statistics": 0.0,
+      "behavioral": 1.0
+    },
+    "value_jump": {
+      "structure": 0.0,
+      "statistics": 0.0,
+      "behavioral": 1.0
+    },
+    "read_flood": {
+      "structure": 0.0,
+      "statistics": 1.0,
+      "behavioral": 0.0
+    },
+    "session_flood": {
+      "structure": 0.0,
+      "statistics": 1.0,
+      "behavioral": 0.0
+    }
+  },
+  "false_positive_rate": {
+    "structure": 0.0,
+    "statistics": 0.0,
+    "behavioral": 0.0
+  },
+  "reasons": {
+    "structure": {
+      "invalid_node": {
+        "unexpected_length": 1
+      }
+    },
+    "behavioral": {
+      "write_no_read": {
+        "write_no_read": 1
+      },
+      "value_jump": {
+        "value_jump": 1
+      }
+    },
+    "statistics": {
+      "invalid_node": {
+        "(no alert)": 1
+      },
+      "write_no_read": {
+        "(no alert)": 1
+      },
+      "value_jump": {
+        "(no alert)": 1
+      },
+      "read_flood": {
+        "rate": 1,
+        "avg_gap": 1
+      },
+      "session_flood": {
+        "rate": 1,
+        "avg_size": 1,
+        "avg_gap": 1,
+        "new_conns": 1
+      }
+    }
+  }
+}
