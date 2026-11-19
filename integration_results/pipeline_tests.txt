@@ -1,0 +1,38 @@
+test_constant_fallback_is_length_only (paola_t1.test_clustering.ClusteringTests.test_constant_fallback_is_length_only) ... ok
+test_counter_is_not_a_type (paola_t1.test_clustering.ClusteringTests.test_counter_is_not_a_type) ... ok
+test_input_and_metadata_ignored (paola_t1.test_clustering.ClusteringTests.test_input_and_metadata_ignored) ... ok
+test_order_determinism (paola_t1.test_clustering.ClusteringTests.test_order_determinism) ... ok
+test_predict_does_not_retrain (paola_t1.test_clustering.ClusteringTests.test_predict_does_not_retrain) ... ok
+test_rare_lengths_and_signatures (paola_t1.test_clustering.ClusteringTests.test_rare_lengths_and_signatures) ... ok
+test_refit_discards_previous_model (paola_t1.test_clustering.ClusteringTests.test_refit_discards_previous_model) ... ok
+test_t2_groups_preserve_records (paola_t1.test_clustering.ClusteringTests.test_t2_groups_preserve_records) ... ok
+test_unknown_and_new_length (paola_t1.test_clustering.ClusteringTests.test_unknown_and_new_length) ... ok
+test_validation (paola_t1.test_clustering.ClusteringTests.test_validation) ... ok
+test_empty_training_rejected (opcua_ids.test_chain_t1_t2.ChainTests.test_empty_training_rejected) ... ok
+test_held_out_does_not_retrain (opcua_ids.test_chain_t1_t2.ChainTests.test_held_out_does_not_retrain) ... ok
+test_t2_receives_each_cluster_separately_in_original_order (opcua_ids.test_chain_t1_t2.ChainTests.test_t2_receives_each_cluster_separately_in_original_order) ... ok
+test_unknown_training_payload_is_not_sent_to_t2 (opcua_ids.test_chain_t1_t2.ChainTests.test_unknown_training_payload_is_not_sent_to_t2) ... ok
+test_behavior_reads_cover_range_but_not_other_client (integrated_ids.test_pipeline.DetectorTests.test_behavior_reads_cover_range_but_not_other_client) ... ok
+test_inferred_constant_field_is_actually_used (integrated_ids.test_pipeline.DetectorTests.test_inferred_constant_field_is_actually_used) ... ok
+test_metadata_independence (integrated_ids.test_pipeline.DetectorTests.test_metadata_independence) ... ok
+test_metrics_unlabeled_excluded (integrated_ids.test_pipeline.DetectorTests.test_metrics_unlabeled_excluded) ... ok
+test_shared_process_changes_and_registers_separate (integrated_ids.test_pipeline.DetectorTests.test_shared_process_changes_and_registers_separate) ... ok
+test_validation_and_rate_windows (integrated_ids.test_pipeline.DetectorTests.test_validation_and_rate_windows) ... ok
+test_window_labels_include_mixed_traffic_without_relabeling_messages (integrated_ids.test_pipeline.DetectorTests.test_window_labels_include_mixed_traffic_without_relabeling_messages) ... ok
+test_capture_hash_is_verified (integrated_ids.test_pipeline.EvaluationTests.test_capture_hash_is_verified) ... ok
+test_incomplete_capture_manifest_rejected (integrated_ids.test_pipeline.EvaluationTests.test_incomplete_capture_manifest_rejected) ... ok
+test_monitor_write_is_rejected (integrated_ids.test_pipeline.EvaluationTests.test_monitor_write_is_rejected) ... ok
+test_training_attack_rejected_before_fit (integrated_ids.test_pipeline.EvaluationTests.test_training_attack_rejected_before_fit) ... ok
+test_wrong_owner_write_is_rejected (integrated_ids.test_pipeline.EvaluationTests.test_wrong_owner_write_is_rejected) ... ok
+test_ambiguous_and_old_events_not_assumed_normal (integrated_ids.test_pipeline.LabelTests.test_ambiguous_and_old_events_not_assumed_normal) ... ok
+test_exact_connection_and_hash_required (integrated_ids.test_pipeline.LabelTests.test_exact_connection_and_hash_required) ... ok
+test_fragment_reorder_retransmission_and_coalescing (integrated_ids.test_pipeline.StreamTests.test_fragment_reorder_retransmission_and_coalescing) ... ok
+test_gaps_and_conflicting_overlap_rejected (integrated_ids.test_pipeline.StreamTests.test_gaps_and_conflicting_overlap_rejected) ... ok
+test_opc_frames_and_incomplete_tail (integrated_ids.test_pipeline.StreamTests.test_opc_frames_and_incomplete_tail) ... ok
+test_real_pcap_connection_isolation_and_reuse (integrated_ids.test_pipeline.StreamTests.test_real_pcap_connection_isolation_and_reuse) ... ok
+test_wrap (integrated_ids.test_pipeline.StreamTests.test_wrap) ... ok
+
+----------------------------------------------------------------------
+Ran 33 tests in 1.036s
+
+OK

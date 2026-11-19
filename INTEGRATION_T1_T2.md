@@ -1,5 +1,10 @@
 # T1 + T2 integration
 
+This file documents the initial capture-to-schema integration. For the later
+multi-master lab, TCP reconstruction, verified labels and integrated detection,
+see [integrated_ids/README.md](integrated_ids/README.md). Limitations below refer
+to the initial `opcua_ids/chain_t1_t2.py` runner, which remains available unchanged.
+
 This integration is based on the `opc` branch at commit
 `1ff7557a5522cf6dbbf8f2faa09641ec4589e8f4`, checked against GitHub on
 November 18, 2026. Its source files match the supplied OPC snapshot.
