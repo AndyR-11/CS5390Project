@@ -1,5 +1,4 @@
 """Offline TCP reconstruction and explicit protocol framing adapters.
-
 Protocol knowledge is confined to framing; T1/T2 receive only framed raw bytes.
 Connections with gaps or conflicting retransmissions are rejected, not guessed.
 OPC UA units are UA TCP chunks (not reassembled multi-chunk service bodies).

@@ -1,5 +1,4 @@
 """Bounded loopback-only multi-master Modbus lab and OPC UA gateway.
-
 Three masters own HR1, HR2 and HR3; the monitor reads HR0..HR3 only.
 Attacks run from a seeded randomly selected master on its normal connection
 (write-without-read uses that master's fresh connection).

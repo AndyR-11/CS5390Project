@@ -1,5 +1,4 @@
 """Blind T1/T2 structural detector plus a timing-only baseline.
-
 No protocol names, labels, connection identifiers or known field offsets enter
 the learner. Labels are used only after prediction, in the evaluation module.
 """
@@ -72,8 +71,7 @@ def normal_threshold(values, allowed_fpr=0.05):
 
 
 def fixed_windows(messages, width=1.0):
-    """Per-capture bins, anchored at its first request; no cross-run mixing.
-
+    """
     Lab captures continue past the final traffic bin. Width is also the rate
     denominator. A window is attack-positive if any logged attack is in it.
     """

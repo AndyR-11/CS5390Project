@@ -1,10 +1,9 @@
 """
-Chains T1 (message-type clustering, Paola's clustering.py) into T2
-(field boundary + merge + role inference) -- the integration that was
-missing: T1 alone groups messages by type, but doesn't say what's
-inside them. T2 alone needs messages pre-split by type or its byte
-statistics are meaningless (mixing two message types together looks
-like noise). Neither half changes; this script is pure glue.
+This script connects T1 and T2. First, T1 groups similar messages by type.
+Then, T2 analyzes each group to find field boundaries, combine related sections,
+and estimate what each field does. Analyzing each group separately helps T2 avoid
+confusion between different message structures. The script connects the
+existing T1 and T2 methods without changing how they work.
 
 Pipeline, per captured file:
   1. Load raw messages (protocol-agnostic: just needs {"raw": bytes, ...})
@@ -18,10 +17,10 @@ Pipeline, per captured file:
                                            schema.py's DEFAULT_SCHEMA
   5. Writes one combined schema file: {cluster_id: {"count", "schema"}}
 
-Ground truth (schema.py's DEFAULT_SCHEMA) is used ONLY to score the
-result afterward, exactly like infer_evaluate.py already does -- it is
-never passed into clustering or inference themselves. This keeps the
-whole chain's "no spec used" discipline intact end to end.
+The known schema (DEFAULT_SCHEMA in schema.py) is used only after the analysis
+to check the results, just as infer_evaluate.py does. T1 and T2 do not receive
+this schema. They discover message groups and fields from the raw data without
+using the protocol specification.
 """
 
 import argparse
