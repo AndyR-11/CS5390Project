@@ -20,7 +20,7 @@ from collections import Counter
 def byte_variability(messages, max_len=None):
     """
     messages: list of raw byte strings (or bytes-like), not the full
-              message dicts -- pass [m["raw"] for m in your_messages].
+    message dicts -- pass [m["raw"] for m in your_messages].
     Returns a list of floats, one per byte position, each in [0, 1]:
     0.0 = every message had the exact same byte there, 1.0 = every
     message had a different byte there (as different as possible given

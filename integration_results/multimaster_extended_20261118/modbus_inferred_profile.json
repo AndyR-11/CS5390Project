@@ -1,0 +1,850 @@
+{
+  "t1": {
+    "method": "length + learned low-entropy categorical byte signature",
+    "parameters": {
+      "max_values": 16,
+      "max_entropy": 1.5,
+      "min_samples": 8
+    },
+    "offsets_by_length": {
+      "12": [
+        7,
+        9,
+        10,
+        11
+      ]
+    },
+    "clusters": [
+      {
+        "id": 0,
+        "length": 12,
+        "signature": [
+          3,
+          0,
+          0,
+          4
+        ]
+      },
+      {
+        "id": 1,
+        "length": 12,
+        "signature": [
+          6,
+          1,
+          1,
+          240
+        ]
+      },
+      {
+        "id": 2,
+        "length": 12,
+        "signature": [
+          6,
+          1,
+          1,
+          242
+        ]
+      },
+      {
+        "id": 3,
+        "length": 12,
+        "signature": [
+          6,
+          1,
+          1,
+          245
+        ]
+      },
+      {
+        "id": 4,
+        "length": 12,
+        "signature": [
+          6,
+          1,
+          1,
+          248
+        ]
+      },
+      {
+        "id": 5,
+        "length": 12,
+        "signature": [
+          6,
+          1,
+          1,
+          249
+        ]
+      },
+      {
+        "id": 6,
+        "length": 12,
+        "signature": [
+          6,
+          2,
+          1,
+          240
+        ]
+      },
+      {
+        "id": 7,
+        "length": 12,
+        "signature": [
+          6,
+          2,
+          1,
+          241
+        ]
+      },
+      {
+        "id": 8,
+        "length": 12,
+        "signature": [
+          6,
+          2,
+          1,
+          242
+        ]
+      },
+      {
+        "id": 9,
+        "length": 12,
+        "signature": [
+          6,
+          2,
+          1,
+          243
+        ]
+      },
+      {
+        "id": 10,
+        "length": 12,
+        "signature": [
+          6,
+          2,
+          1,
+          245
+        ]
+      },
+      {
+        "id": 11,
+        "length": 12,
+        "signature": [
+          6,
+          3,
+          1,
+          241
+        ]
+      },
+      {
+        "id": 12,
+        "length": 12,
+        "signature": [
+          6,
+          3,
+          1,
+          244
+        ]
+      },
+      {
+        "id": 13,
+        "length": 12,
+        "signature": [
+          6,
+          3,
+          1,
+          247
+        ]
+      }
+    ],
+    "unknown_id": -1
+  },
+  "t2_per_cluster": {
+    "unassigned": {
+      "count": 104
+    },
+    "0": {
+      "count": 904,
+      "length": 12,
+      "schema": [
+        {
+          "name": "field_0",
+          "offset": 0,
+          "len": 1,
+          "role": "low_variability"
+        },
+        {
+          "name": "field_1",
+          "offset": 1,
+          "len": 1,
+          "role": "variable"
+        },
+        {
+          "name": "field_2",
+          "offset": 2,
+          "len": 10,
+          "role": "constant"
+        }
+      ],
+      "byte_variability": [
+        0.00663716814159292,
+        0.2831858407079646,
+        0.0011061946902654867,
+        0.0011061946902654867,
+        0.0011061946902654867,
+        0.0011061946902654867,
+        0.0011061946902654867,
+        0.0011061946902654867,
+        0.0011061946902654867,
+        0.0011061946902654867,
+        0.0011061946902654867,
+        0.0011061946902654867
+      ]
+    },
+    "1": {
+      "count": 8,
+      "length": 12,
+      "schema": [
+        {
+          "name": "field_0",
+          "offset": 0,
+          "len": 2,
+          "role": "counter"
+        },
+        {
+          "name": "field_1",
+          "offset": 2,
+          "len": 10,
+          "role": "constant"
+        }
+      ],
+      "byte_variability": [
+        0.25,
+        1.0,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125
+      ]
+    },
+    "2": {
+      "count": 11,
+      "length": 12,
+      "schema": [
+        {
+          "name": "field_0",
+          "offset": 0,
+          "len": 2,
+          "role": "counter"
+        },
+        {
+          "name": "field_1",
+          "offset": 2,
+          "len": 10,
+          "role": "constant"
+        }
+      ],
+      "byte_variability": [
+        0.18181818181818182,
+        1.0,
+        0.09090909090909091,
+        0.09090909090909091,
+        0.09090909090909091,
+        0.09090909090909091,
+        0.09090909090909091,
+        0.09090909090909091,
+        0.09090909090909091,
+        0.09090909090909091,
+        0.09090909090909091,
+        0.09090909090909091
+      ]
+    },
+    "3": {
+      "count": 12,
+      "length": 12,
+      "schema": [
+        {
+          "name": "field_0",
+          "offset": 0,
+          "len": 2,
+          "role": "counter"
+        },
+        {
+          "name": "field_1",
+          "offset": 2,
+          "len": 10,
+          "role": "constant"
+        }
+      ],
+      "byte_variability": [
+        0.16666666666666666,
+        1.0,
+        0.08333333333333333,
+        0.08333333333333333,
+        0.08333333333333333,
+        0.08333333333333333,
+        0.08333333333333333,
+        0.08333333333333333,
+        0.08333333333333333,
+        0.08333333333333333,
+        0.08333333333333333,
+        0.08333333333333333
+      ]
+    },
+    "4": {
+      "count": 8,
+      "length": 12,
+      "schema": [
+        {
+          "name": "field_0",
+          "offset": 0,
+          "len": 2,
+          "role": "counter"
+        },
+        {
+          "name": "field_1",
+          "offset": 2,
+          "len": 10,
+          "role": "constant"
+        }
+      ],
+      "byte_variability": [
+        0.25,
+        1.0,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125
+      ]
+    },
+    "5": {
+      "count": 8,
+      "length": 12,
+      "schema": [
+        {
+          "name": "field_0",
+          "offset": 0,
+          "len": 2,
+          "role": "counter"
+        },
+        {
+          "name": "field_1",
+          "offset": 2,
+          "len": 10,
+          "role": "constant"
+        }
+      ],
+      "byte_variability": [
+        0.25,
+        1.0,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125
+      ]
+    },
+    "6": {
+      "count": 13,
+      "length": 12,
+      "schema": [
+        {
+          "name": "field_0",
+          "offset": 0,
+          "len": 2,
+          "role": "counter"
+        },
+        {
+          "name": "field_1",
+          "offset": 2,
+          "len": 10,
+          "role": "constant"
+        }
+      ],
+      "byte_variability": [
+        0.15384615384615385,
+        1.0,
+        0.07692307692307693,
+        0.07692307692307693,
+        0.07692307692307693,
+        0.07692307692307693,
+        0.07692307692307693,
+        0.07692307692307693,
+        0.07692307692307693,
+        0.07692307692307693,
+        0.07692307692307693,
+        0.07692307692307693
+      ]
+    },
+    "7": {
+      "count": 9,
+      "length": 12,
+      "schema": [
+        {
+          "name": "field_0",
+          "offset": 0,
+          "len": 2,
+          "role": "variable"
+        },
+        {
+          "name": "field_1",
+          "offset": 2,
+          "len": 10,
+          "role": "constant"
+        }
+      ],
+      "byte_variability": [
+        0.2222222222222222,
+        1.0,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111
+      ]
+    },
+    "8": {
+      "count": 9,
+      "length": 12,
+      "schema": [
+        {
+          "name": "field_0",
+          "offset": 0,
+          "len": 2,
+          "role": "variable"
+        },
+        {
+          "name": "field_1",
+          "offset": 2,
+          "len": 10,
+          "role": "constant"
+        }
+      ],
+      "byte_variability": [
+        0.2222222222222222,
+        1.0,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111
+      ]
+    },
+    "9": {
+      "count": 8,
+      "length": 12,
+      "schema": [
+        {
+          "name": "field_0",
+          "offset": 0,
+          "len": 2,
+          "role": "variable"
+        },
+        {
+          "name": "field_1",
+          "offset": 2,
+          "len": 10,
+          "role": "constant"
+        }
+      ],
+      "byte_variability": [
+        0.25,
+        1.0,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125
+      ]
+    },
+    "10": {
+      "count": 9,
+      "length": 12,
+      "schema": [
+        {
+          "name": "field_0",
+          "offset": 0,
+          "len": 2,
+          "role": "variable"
+        },
+        {
+          "name": "field_1",
+          "offset": 2,
+          "len": 10,
+          "role": "constant"
+        }
+      ],
+      "byte_variability": [
+        0.2222222222222222,
+        1.0,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111
+      ]
+    },
+    "11": {
+      "count": 9,
+      "length": 12,
+      "schema": [
+        {
+          "name": "field_0",
+          "offset": 0,
+          "len": 2,
+          "role": "counter"
+        },
+        {
+          "name": "field_1",
+          "offset": 2,
+          "len": 10,
+          "role": "constant"
+        }
+      ],
+      "byte_variability": [
+        0.2222222222222222,
+        1.0,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111,
+        0.1111111111111111
+      ]
+    },
+    "12": {
+      "count": 10,
+      "length": 12,
+      "schema": [
+        {
+          "name": "field_0",
+          "offset": 0,
+          "len": 2,
+          "role": "counter"
+        },
+        {
+          "name": "field_1",
+          "offset": 2,
+          "len": 10,
+          "role": "constant"
+        }
+      ],
+      "byte_variability": [
+        0.2,
+        1.0,
+        0.1,
+        0.1,
+        0.1,
+        0.1,
+        0.1,
+        0.1,
+        0.1,
+        0.1,
+        0.1,
+        0.1
+      ]
+    },
+    "13": {
+      "count": 10,
+      "length": 12,
+      "schema": [
+        {
+          "name": "field_0",
+          "offset": 0,
+          "len": 2,
+          "role": "counter"
+        },
+        {
+          "name": "field_1",
+          "offset": 2,
+          "len": 10,
+          "role": "constant"
+        }
+      ],
+      "byte_variability": [
+        0.2,
+        1.0,
+        0.1,
+        0.1,
+        0.1,
+        0.1,
+        0.1,
+        0.1,
+        0.1,
+        0.1,
+        0.1,
+        0.1
+      ]
+    }
+  },
+  "field_profiles": {
+    "0": [
+      {
+        "name": "field_0",
+        "offset": 0,
+        "len": 1,
+        "role": "low_variability",
+        "min": 17,
+        "max": 77
+      },
+      {
+        "name": "field_1",
+        "offset": 1,
+        "len": 1,
+        "role": "variable",
+        "min": 0,
+        "max": 255
+      },
+      {
+        "name": "field_2",
+        "offset": 2,
+        "len": 10,
+        "role": "constant",
+        "expected_hex": "00000006010300000004"
+      }
+    ],
+    "10": [
+      {
+        "name": "field_0",
+        "offset": 0,
+        "len": 2,
+        "role": "variable",
+        "min": 7460,
+        "max": 13745
+      },
+      {
+        "name": "field_1",
+        "offset": 2,
+        "len": 10,
+        "role": "constant",
+        "expected_hex": "000000060106000201f5"
+      }
+    ],
+    "7": [
+      {
+        "name": "field_0",
+        "offset": 0,
+        "len": 2,
+        "role": "variable",
+        "min": 7444,
+        "max": 13793
+      },
+      {
+        "name": "field_1",
+        "offset": 2,
+        "len": 10,
+        "role": "constant",
+        "expected_hex": "000000060106000201f1"
+      }
+    ],
+    "3": [
+      {
+        "name": "field_0",
+        "offset": 0,
+        "len": 2,
+        "role": "counter"
+      },
+      {
+        "name": "field_1",
+        "offset": 2,
+        "len": 10,
+        "role": "constant",
+        "expected_hex": "000000060106000101f5"
+      }
+    ],
+    "11": [
+      {
+        "name": "field_0",
+        "offset": 0,
+        "len": 2,
+        "role": "counter"
+      },
+      {
+        "name": "field_1",
+        "offset": 2,
+        "len": 10,
+        "role": "constant",
+        "expected_hex": "000000060106000301f1"
+      }
+    ],
+    "9": [
+      {
+        "name": "field_0",
+        "offset": 0,
+        "len": 2,
+        "role": "variable",
+        "min": 7436,
+        "max": 13789
+      },
+      {
+        "name": "field_1",
+        "offset": 2,
+        "len": 10,
+        "role": "constant",
+        "expected_hex": "000000060106000201f3"
+      }
+    ],
+    "5": [
+      {
+        "name": "field_0",
+        "offset": 0,
+        "len": 2,
+        "role": "counter"
+      },
+      {
+        "name": "field_1",
+        "offset": 2,
+        "len": 10,
+        "role": "constant",
+        "expected_hex": "000000060106000101f9"
+      }
+    ],
+    "6": [
+      {
+        "name": "field_0",
+        "offset": 0,
+        "len": 2,
+        "role": "counter"
+      },
+      {
+        "name": "field_1",
+        "offset": 2,
+        "len": 10,
+        "role": "constant",
+        "expected_hex": "000000060106000201f0"
+      }
+    ],
+    "13": [
+      {
+        "name": "field_0",
+        "offset": 0,
+        "len": 2,
+        "role": "counter"
+      },
+      {
+        "name": "field_1",
+        "offset": 2,
+        "len": 10,
+        "role": "constant",
+        "expected_hex": "000000060106000301f7"
+      }
+    ],
+    "12": [
+      {
+        "name": "field_0",
+        "offset": 0,
+        "len": 2,
+        "role": "counter"
+      },
+      {
+        "name": "field_1",
+        "offset": 2,
+        "len": 10,
+        "role": "constant",
+        "expected_hex": "000000060106000301f4"
+      }
+    ],
+    "2": [
+      {
+        "name": "field_0",
+        "offset": 0,
+        "len": 2,
+        "role": "counter"
+      },
+      {
+        "name": "field_1",
+        "offset": 2,
+        "len": 10,
+        "role": "constant",
+        "expected_hex": "000000060106000101f2"
+      }
+    ],
+    "8": [
+      {
+        "name": "field_0",
+        "offset": 0,
+        "len": 2,
+        "role": "variable",
+        "min": 7448,
+        "max": 13769
+      },
+      {
+        "name": "field_1",
+        "offset": 2,
+        "len": 10,
+        "role": "constant",
+        "expected_hex": "000000060106000201f2"
+      }
+    ],
+    "1": [
+      {
+        "name": "field_0",
+        "offset": 0,
+        "len": 2,
+        "role": "counter"
+      },
+      {
+        "name": "field_1",
+        "offset": 2,
+        "len": 10,
+        "role": "constant",
+        "expected_hex": "000000060106000101f0"
+      }
+    ],
+    "4": [
+      {
+        "name": "field_0",
+        "offset": 0,
+        "len": 2,
+        "role": "counter"
+      },
+      {
+        "name": "field_1",
+        "offset": 2,
+        "len": 10,
+        "role": "constant",
+        "expected_hex": "000000060106000101f8"
+      }
+    ]
+  }
+}
