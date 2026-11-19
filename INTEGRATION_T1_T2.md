@@ -12,13 +12,13 @@ The changes are prepared on `paola/t1-t2-integration` for team review.
 
 ## Changes
 
-- Added `opcua_ids/chain_t1_t2.py`: Paola's T1 groups raw payloads, then the
+- Added `opcua_ids/chain_t1_t2.py`: T1 groups raw payloads, then the
   existing `infer_boundaries`, `merge_fields`, and `assign_roles` functions run
   separately within each known training group. Unknowns are counted and skipped.
 - Added four integration tests in `opcua_ids/test_chain_t1_t2.py`.
 - Changed only the import in `modbus_ids/infer_roles.py` to support both package
   imports and the existing direct-script invocation. Its inference logic is unchanged.
-- Paola's clustering algorithm and the existing detector logic are unchanged.
+- The clustering algorithm and the existing detector logic are unchanged.
 
 ## Run from the project root
 
@@ -48,7 +48,7 @@ Use repeated `--test-pcap PATH` arguments to assign other captures without retra
 - Additional captures: invalid_node 8/8 unknown; write_no_read 11/11;
   value_jump 12/12; read_flood 60/60; session_flood 120/120.
   These are novelty counts, NOT attack detection rates. Session-specific bytes,
-  message lengths and other differences may explain unknown assignments.
+  message lengths, and other differences may explain unknown assignments.
 - Existing Modbus chain still runs: 1,982 requests, two clusters of 1,798 and
   184 requests. Each yields two field spans. Its existing reference scoring
   reports F1 0.57 for each cluster, on the same data used for inference and
@@ -59,7 +59,7 @@ Results are in `integration_results/opc_t1_t2.json` and
 
 ## Remaining limits
 
-The loader reads IPv4 TCP payloads without stream reassembly, deduplication or
+The loader reads IPv4 TCP payloads without stream reassembly, deduplication, or
 application-message framing. A payload can contain a partial message or multiple
 messages. Clustering by length can split the same semantic operation. The T2
 merge and role functions use big-endian numeric heuristics and the existing
