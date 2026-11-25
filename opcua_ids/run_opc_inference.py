@@ -1,5 +1,6 @@
 import argparse
-from pcap_loader_generic import load_tcp_payloads
+
+from pcap_loader import load_tcp_payloads
 from infer_structure import infer, save_schema
 
 
