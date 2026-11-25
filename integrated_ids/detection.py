@@ -10,7 +10,13 @@ from paola_t1.clustering import group_messages
 
 
 def fit(messages):
-    artifact, model = run_chain(messages)
+    # min_samples=4 (default 8): with 3 masters splitting traffic three
+    # ways, each legitimate sub-pattern gets fewer training examples, so
+    # the default threshold was calling genuinely-normal validation
+    # traffic "unknown" ~14% (Modbus) / ~4-6% (OPC UA) of the time --
+    # exactly as often as some real attacks, which made them
+    # unscoreable: identical score, no possible separating threshold.
+    artifact, model = run_chain(messages, clusterer_kwargs={'min_samples': 4})
     groups = group_messages(messages, model.predict(messages))
     profiles = {}
     for cluster, group in groups.items():
@@ -27,7 +33,15 @@ def fit(messages):
             elif field['role'] != 'counter' and length <= 8:
                 # An explicit inherited heuristic, not decoded protocol semantics.
                 ints = [int.from_bytes(v, 'big') for v in values]
-                entry.update(min=min(ints), max=max(ints))
+                lo, hi = min(ints), max(ints)
+                # Safety margin, same idea as the max_write_step*1.5 margin
+                # already used for the behavioral detector: an exact
+                # training min/max leaves zero room for a second master's
+                # legitimate value range to differ slightly from the first
+                # master's training sample, which is what was pushing the
+                # calibrated threshold to disable the detector entirely.
+                margin = max(1, round((hi-lo)*0.15))
+                entry.update(min=lo-margin, max=hi+margin)
             entries.append(entry)
         profiles[str(cluster)] = entries
     artifact['field_profiles'] = profiles
@@ -47,7 +61,14 @@ def score(messages, artifact, model):
                     reasons.append('constant:'+field['name'])
                 elif 'min' in field and not field['min'] <= int.from_bytes(raw, 'big') <= field['max']:
                     reasons.append('range:'+field['name'])
-        output.append({'score': float(bool(reasons)), 'reasons': reasons, 'cluster': cluster})
+        # Graded, not binary: counts HOW MANY fields violate, instead of
+        # just whether any did. With a binary 0/1 score, once >5% of clean
+        # validation messages trip even one field, the 95th-percentile
+        # threshold becomes 1 and "score > 1" can never be true again --
+        # the detector silently goes dead. A graded count gives the
+        # threshold real room (e.g. settle at 1, so only >=2 simultaneous
+        # violations alert) instead of collapsing to all-or-nothing.
+        output.append({'score': float(len(reasons)), 'reasons': reasons, 'cluster': cluster})
     return output
 
 

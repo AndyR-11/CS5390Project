@@ -133,6 +133,36 @@ class ModbusClient:
             raise ValueError('Unexpected Modbus response')
         return recv_exact(self.socket, size)
 
+    def request_bad_length(self, function, address, value, label, bad_length):
+        """Lies about the MBAP length field. The server will try to read
+        `bad_length` body bytes instead of the 6 actually sent, so it will
+        NOT produce a clean response on this connection -- don't wait for
+        one. The caller must close() and connect() again afterward."""
+        self.tid = (self.tid+1) % 65536
+        raw = struct.pack('>HHHBBHH', self.tid, 0, bad_length, 1, function, address, value)
+        local, peer = self.socket.getsockname(), self.socket.getpeername()
+        if self.log:
+            self.log.add(raw, (*local, *peer), self.name, label)
+        self.socket.sendall(raw)
+
+    def request_replay(self, function, address, value, label, gap=0.05):
+        """Sends the exact same raw bytes (same transaction id included)
+        twice in a row."""
+        self.tid = (self.tid+1) % 65536
+        raw = struct.pack('>HHHBBHH', self.tid, 0, 6, 1, function, address, value)
+        local, peer = self.socket.getsockname(), self.socket.getpeername()
+        for i in range(2):
+            if self.log:
+                self.log.add(raw, (*local, *peer), self.name, label)
+            self.socket.sendall(raw)
+            header = recv_exact(self.socket, 6)
+            tid, proto, size = struct.unpack('>HHH', header)
+            if proto != 0 or not 2 <= size <= 254:
+                raise ValueError('Unexpected Modbus response')
+            recv_exact(self.socket, size)
+            if i == 0:
+                time.sleep(gap)
+
 
 def run_modbus(port, log, seed, attack=None, cycles=36):
     selected = random.Random(seed).randrange(1, 4) if attack else None
@@ -143,25 +173,42 @@ def run_modbus(port, log, seed, attack=None, cycles=36):
         name = f'master_{master}' if master else 'monitor'
         client = None
         rng = random.Random(seed+100*master)
+        # Randomized TIMING: a random cycle within the middle 40% of the
+        # run, not always the exact midpoint -- a fixed signature shape
+        # makes for a weaker test of whether detection generalizes.
+        attack_cycle = rng.randint(int(cycles*0.3), int(cycles*0.7)) if master == selected else -1
         try:
             client = ModbusClient(port, name, log, seed+master)
             barrier.wait(timeout=5)
             for i in range(cycles):
-                if master == selected and i == cycles//2:
+                if master == selected and i == attack_cycle:
                     label = 'attack:'+attack
                     if attack == 'write_no_read':
                         client.close()
                         client.connect()
-                        client.request(6, master, 500, label)
+                        # Value itself stays in the normal band -- only the
+                        # missing read before it is supposed to give it away.
+                        client.request(6, master, rng.randint(490, 510), label)
                     elif attack == 'value_jump':
                         client.request(3, master, 1)
-                        client.request(6, master, 999, label)
-                        client.request(6, master, 500)
+                        jump_value = rng.choice([rng.randint(700, 999), rng.randint(0, 200)])
+                        client.request(6, master, jump_value, label)
+                        client.request(6, master, rng.randint(495, 505))
                     elif attack == 'illegal_func':
-                        client.request(43, master, 1, label)
+                        code = rng.choice([7, 11, 17, 22, 43, 80, 97])
+                        client.request(code, master, rng.randint(0, 9), label)
                     elif attack == 'read_flood':
-                        for _ in range(60):
+                        for _ in range(rng.randint(40, 90)):
                             client.request(3, 0, 4, label)
+                    elif attack == 'out_of_range':
+                        client.request(3, 10, rng.randint(500, 9999), label)
+                    elif attack == 'replay':
+                        client.request_replay(3, 0, 4, label)
+                    elif attack == 'bad_length':
+                        client.request_bad_length(3, 10, 1, label,
+                                                   bad_length=rng.choice([60, 99, 150, 200]))
+                        client.close()
+                        client.connect()
                     else:
                         raise ValueError('Unsupported attack')
                 client.request(3, 0, 4, fragment=(i % 7 == 0))
@@ -216,10 +263,11 @@ async def run_opc(port, modbus_port, log, seed, attack=None, cycles=36):
             await nodes[0].write_value(ua.UInt16(vals[0]))
             await asyncio.sleep(.01)
 
-    async def worker(master):
-        name = f'master_{master}' if master else 'monitor'
-        client = Client(url)
-        label = ['normal']
+    def attach_logging(client, name, label):
+        """Patches a Client so every frame it sends is logged under `name`
+        with whatever label[0] currently holds. Factored out so a
+        session_flood attack's own short-lived throwaway connections get
+        logged too, not just each worker's main, long-lived one."""
         original_connect = client.uaclient.connect_socket
 
         async def logged_connect(*args, **kwargs):
@@ -234,11 +282,20 @@ async def run_opc(port, modbus_port, log, seed, attack=None, cycles=36):
                 return original_write(raw)
             transport.write = write
         client.uaclient.connect_socket = logged_connect
+
+    async def worker(master):
+        name = f'master_{master}' if master else 'monitor'
+        client = Client(url)
+        label = ['normal']
+        attach_logging(client, name, label)
         rng = random.Random(seed+100*master)
+        # Randomized TIMING: a random cycle within the middle 40% of the
+        # run, not always the exact midpoint.
+        attack_cycle = rng.randint(int(cycles*0.3), int(cycles*0.7)) if master == selected else -1
         async with client:
             reads = [client.get_node(n.nodeid) for n in nodes]
             for i in range(cycles):
-                if master == selected and i == cycles//2:
+                if master == selected and i == attack_cycle:
                     if attack == 'write_no_read':
                         await client.disconnect()
                         await client.connect()
@@ -249,17 +306,29 @@ async def run_opc(port, modbus_port, log, seed, attack=None, cycles=36):
                                 await client.get_node(ua.NodeId('missing', idx)).read_value()
                             except ua.UaStatusCodeError:
                                 pass
-                        elif attack in ('value_jump', 'write_no_read'):
-                            await reads[master].write_value(ua.UInt16(999 if attack == 'value_jump' else 500))
+                        elif attack == 'value_jump':
+                            jump_value = rng.choice([rng.randint(700, 999), rng.randint(0, 200)])
+                            await reads[master].write_value(ua.UInt16(jump_value))
+                        elif attack == 'write_no_read':
+                            await reads[master].write_value(ua.UInt16(rng.randint(490, 510)))
                         elif attack == 'read_flood':
-                            for _ in range(60):
+                            for _ in range(rng.randint(40, 90)):
                                 await reads[0].read_value()
+                        elif attack == 'session_flood':
+                            # Rapidly open and close sessions instead of
+                            # reusing this master's normal one -- a flood
+                            # of new connections/sessions, not of reads.
+                            for _ in range(rng.randint(15, 30)):
+                                flood_client = Client(url)
+                                attach_logging(flood_client, name, label)
+                                async with flood_client:
+                                    await flood_client.get_node(nodes[0].nodeid).read_value()
                         else:
                             raise ValueError('Unsupported attack')
                     finally:
                         label[0] = 'normal'
                     if attack == 'value_jump':
-                        await reads[master].write_value(ua.UInt16(500))
+                        await reads[master].write_value(ua.UInt16(rng.randint(495, 505)))
                 await client.read_values(reads)
                 if master and i % 3 == 0:
                     await reads[master].write_value(ua.UInt16(rng.randint(495, 505)))

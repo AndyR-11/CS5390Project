@@ -33,12 +33,43 @@ def _distinct_count(values):
     return len(set(values))
 
 
-def assign_roles(raw_messages, fields):
+def _is_counter_per_connection(values, sessions, length, min_fraction=0.9):
+    """Counter check done PER CONNECTION, not on values pooled across
+    several independent connections. Each connection has its own
+    independent counter (e.g. a Modbus transaction ID, an OPC UA
+    request handle); interleaving several connections by arrival order
+    destroys monotonicity even though each connection is individually
+    a clean counter. Also width-aware: a wrap is a big-to-small drop
+    near this field's own max value, not a hardcoded 16-bit assumption.
+    """
+    max_value = (1 << (8 * length)) - 1
+    by_session = {}
+    for value, session in zip(values, sessions):
+        by_session.setdefault(session, []).append(value)
+    ok = total = 0
+    for seq in by_session.values():
+        for a, b in zip(seq, seq[1:]):
+            total += 1
+            if b >= a or (a - b) > max_value * 0.9:
+                ok += 1
+    return total > 0 and (ok / total) >= min_fraction
+
+
+def assign_roles(raw_messages, fields, sessions=None):
     """
     raw_messages: list of raw byte strings (same messages used for
                   inference).
     fields: list of (offset, length) from infer_boundaries +
             infer_merge.
+    sessions: optional list, same length as raw_messages, identifying
+              which physical connection each message belongs to. When
+              given, the counter check is done per connection instead
+              of on values pooled across every connection in the
+              cluster -- pooling multiple independent connections'
+              counters by arrival order can make a genuine counter
+              field look like "variable" (see _is_counter_per_connection).
+              When omitted, behavior is unchanged from before (pooled
+              check), so existing callers and tests are unaffected.
     Returns a schema list: [{"name", "offset", "len", "role"}, ...],
     in the same shape as schema.py's DEFAULT_SCHEMA.
     """
@@ -50,7 +81,9 @@ def assign_roles(raw_messages, fields):
 
         if distinct == 1:
             role = "constant"
-        elif _is_monotonic_merge(values):
+        elif sessions is not None and _is_counter_per_connection(values, sessions, length):
+            role = "counter"
+        elif sessions is None and _is_monotonic_merge(values):
             role = "counter"
         elif distinct <= max(4, n * 0.05):
             role = "low_variability"

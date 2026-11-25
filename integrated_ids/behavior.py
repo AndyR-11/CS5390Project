@@ -19,6 +19,7 @@ def decode(raw, protocol):
 def fit_behavior(messages, protocol):
     nodes = set()
     values = {}
+    owners = {}
     errors = 0
     for message in messages:
         try:
@@ -34,8 +35,18 @@ def fit_behavior(messages, protocol):
             value = write['value']
             if isinstance(value, (int, float)) and not isinstance(value, bool):
                 values.setdefault(write['node'], []).append(value)
+            # Per-node writer identity learned from clean training traffic
+            # only. A write's function code, address and value can all be
+            # perfectly well-formed and in-range (e.g. master_1 writing a
+            # normal value to master_2's register) -- that attack is
+            # invisible to every check above, since none of them know
+            # WHO is allowed to write WHERE. This is the only thing that
+            # catches it.
+            client = message.get('client')
+            if client is not None:
+                owners.setdefault(write['node'], set()).add(client)
     return {'nodes': nodes, 'ranges': {k: (min(v), max(v)) for k, v in values.items()},
-            'training_decode_errors': errors}
+            'owners': owners, 'training_decode_errors': errors}
 
 
 def predict_behavior(messages, profile, protocol):
@@ -68,5 +79,7 @@ def predict_behavior(messages, profile, protocol):
                     margin = max(1, (hi-lo)*.5)
                     if not lo-margin <= value <= hi+margin:
                         reasons.append('write_outside_learned_range')
+                if node in profile['owners'] and message['client'] not in profile['owners'][node]:
+                    reasons.append('ownership_violation')
         results.append(reasons)
     return results, errors

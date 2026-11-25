@@ -121,25 +121,32 @@ def load_capture(path, port, protocol, direction='request'):
 
 
 def attach_labels(messages, events, tolerance=2.0):
-    """One-to-one match: full connection + exact payload SHA256 + send time.
+    """Match: full connection + exact payload SHA256 + send time, in send order.
 
-    Unmatched traffic is unlabeled, never silently treated as normal.
+    When two or more events on the same connection share an identical payload
+    (a repeated read of an unchanged value, a flood of identical requests, a
+    deliberate replay), they are not ambiguous: TCP preserves order on a single
+    connection, so the event log and the reconstructed stream agree on which
+    occurrence came first. Within a (connection, sha256) bucket, events and
+    messages are each already in send-time order; pairing them FIFO recovers
+    the correct correspondence instead of discarding both as unmatched.
+
+    The tolerance check still applies to each pairing, so a message that is
+    not actually close in time to the next unmatched event of that bucket is
+    left unmatched rather than guessed. Unmatched traffic is unlabeled, never
+    silently treated as normal.
     """
     index = defaultdict(deque)
     for event in sorted(events, key=lambda e: e['ts']):
         index[(tuple(event['connection']), event['sha256'])].append(event)
     matched = 0
-    for message in messages:
+    for message in sorted(messages, key=lambda m: m['ts']):
         key = (tuple(message['connection']), hashlib.sha256(message['raw']).hexdigest())
-        candidates = index.get(key, deque())
-        eligible = [e for e in candidates if abs(e['ts']-message['ts']) <= tolerance]
-        if len(eligible) == 1:
-            event = eligible[0]
-            candidates.remove(event)
+        candidates = index.get(key)
+        if candidates and abs(candidates[0]['ts'] - message['ts']) <= tolerance:
+            event = candidates.popleft()
             message.update(label=event['label'], client=event['client'], event_id=event['event_id'])
             matched += 1
-        elif len(eligible) > 1:
-            message['label'] = 'unlabeled:ambiguous'
         else:
             message['label'] = 'unlabeled'
     return {'matched': matched, 'unmatched_messages': len(messages)-matched,

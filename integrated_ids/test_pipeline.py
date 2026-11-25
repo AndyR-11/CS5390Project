@@ -86,12 +86,25 @@ class LabelTests(unittest.TestCase):
         self.assertEqual(msgs[0]['label'], 'attack:value_jump')
         self.assertEqual(msgs[1]['label'], 'unlabeled')
 
-    def test_ambiguous_and_old_events_not_assumed_normal(self):
+    def test_surplus_duplicate_event_resolved_in_send_order_not_assumed_normal(self):
+        # Two logged sends share the same connection, payload and time --
+        # exactly what a repeated read of an unchanged value, a flood, or a
+        # deliberate replay produces. TCP preserves order on one connection,
+        # so the earlier logged event is paired with the one captured
+        # message, and the surplus logged send is never silently dropped or
+        # guessed into a false "normal" match: it stays in the audit as an
+        # unmatched event, which the strict evaluate() check still catches.
         event = {'connection': ['a', 1, 'b', 2], 'sha256': hashlib.sha256(b'x').hexdigest(),
                  'ts': 1, 'label': 'normal', 'client': 'c', 'event_id': 1}
         msgs = [{'connection': event['connection'], 'raw': b'x', 'ts': 1}]
-        attach_labels(msgs, [event, dict(event, event_id=2)])
-        self.assertEqual(msgs[0]['label'], 'unlabeled:ambiguous')
+        audit = attach_labels(msgs, [event, dict(event, event_id=2)])
+        self.assertEqual(msgs[0]['label'], 'normal')
+        self.assertEqual(audit['unmatched_events'], 1)
+
+    def test_old_event_outside_tolerance_not_assumed_normal(self):
+        event = {'connection': ['a', 1, 'b', 2], 'sha256': hashlib.sha256(b'x').hexdigest(),
+                 'ts': 1, 'label': 'normal', 'client': 'c', 'event_id': 1}
+        msgs = [{'connection': event['connection'], 'raw': b'x', 'ts': 1}]
         attach_labels(msgs, [dict(event, ts=20)])
         self.assertEqual(msgs[0]['label'], 'unlabeled')
 

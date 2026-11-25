@@ -1,0 +1,30 @@
+Capturing on 'Adapter for loopback traffic capture'
+File: C:\CS5390Project\integration_results\full_test\opcua_18_test_session_flood\traffic.pcapng
+
+Packets: 1
+Packets: 105
+Packets: 221
+Packets: 343
+Packets: 461
+Packets: 573
+Packets: 693
+Packets: 811
+Packets: 929
+Packets: 1045
+Packets: 1165
+Packets: 1283
+Packets: 1401
+Packets: 1519
+Packets: 1637
+Packets: 1757
+Packets: 2010
+Packets: 2398
+Packets: 2520
+Packets: 2638
+Packets: 2758
+Packets: 2876
+Packets: 2992
+Packets: 3110
+Packets: 3240
+Packets captured: 3240
+Packets received/dropped on interface 'Adapter for loopback traffic capture': 3240/0 (pcap:0/dumpcap:0/flushed:0/ps_ifdrop:0) (100.0%)

@@ -1,0 +1,614 @@
+{
+  "seed": 5390,
+  "capture_method": "dumpcap Npcap loopback; real socket traffic",
+  "runs": [
+    {
+      "id": "modbus_00_train_normal",
+      "protocol": "modbus",
+      "split": "train",
+      "attack": null,
+      "port": 56908,
+      "cycles_per_client": 112,
+      "capture_seconds": 8,
+      "pcap": "modbus_00_train_normal/traffic.pcapng",
+      "events": "modbus_00_train_normal/events.jsonl",
+      "details": {
+        "selected_attacker": null,
+        "ownership": {
+          "master_1": 1,
+          "master_2": 2,
+          "master_3": 3
+        },
+        "monitor": "read-only HR0..HR3",
+        "seed": 5390
+      },
+      "sha256": "13923b3be9820f269075ce381a3549af7f2affefa2f85168a6c9c1a0dc9dab47"
+    },
+    {
+      "id": "modbus_01_train_normal",
+      "protocol": "modbus",
+      "split": "train",
+      "attack": null,
+      "port": 56954,
+      "cycles_per_client": 132,
+      "capture_seconds": 8,
+      "pcap": "modbus_01_train_normal/traffic.pcapng",
+      "events": "modbus_01_train_normal/events.jsonl",
+      "details": {
+        "selected_attacker": null,
+        "ownership": {
+          "master_1": 1,
+          "master_2": 2,
+          "master_3": 3
+        },
+        "monitor": "read-only HR0..HR3",
+        "seed": 5391
+      },
+      "sha256": "68abff28b0d40ca98f064787635b631f05688ee4dbd9e61d53fdecaedd048017"
+    },
+    {
+      "id": "modbus_02_validation_normal",
+      "protocol": "modbus",
+      "split": "validation",
+      "attack": null,
+      "port": 64221,
+      "cycles_per_client": 124,
+      "capture_seconds": 8,
+      "pcap": "modbus_02_validation_normal/traffic.pcapng",
+      "events": "modbus_02_validation_normal/events.jsonl",
+      "details": {
+        "selected_attacker": null,
+        "ownership": {
+          "master_1": 1,
+          "master_2": 2,
+          "master_3": 3
+        },
+        "monitor": "read-only HR0..HR3",
+        "seed": 5392
+      },
+      "sha256": "473e0aa7ff61a619c4cee81761edf7168141fdfee50a758b73991af8fb03a41f"
+    },
+    {
+      "id": "modbus_03_validation_normal",
+      "protocol": "modbus",
+      "split": "validation",
+      "attack": null,
+      "port": 64226,
+      "cycles_per_client": 118,
+      "capture_seconds": 8,
+      "pcap": "modbus_03_validation_normal/traffic.pcapng",
+      "events": "modbus_03_validation_normal/events.jsonl",
+      "details": {
+        "selected_attacker": null,
+        "ownership": {
+          "master_1": 1,
+          "master_2": 2,
+          "master_3": 3
+        },
+        "monitor": "read-only HR0..HR3",
+        "seed": 5393
+      },
+      "sha256": "c88429a034dabc2728d48ab70975132356e5db16a2f95ec91d12041bd0abb9ed"
+    },
+    {
+      "id": "modbus_04_test_normal",
+      "protocol": "modbus",
+      "split": "test",
+      "attack": null,
+      "port": 57114,
+      "cycles_per_client": 112,
+      "capture_seconds": 8,
+      "pcap": "modbus_04_test_normal/traffic.pcapng",
+      "events": "modbus_04_test_normal/events.jsonl",
+      "details": {
+        "selected_attacker": null,
+        "ownership": {
+          "master_1": 1,
+          "master_2": 2,
+          "master_3": 3
+        },
+        "monitor": "read-only HR0..HR3",
+        "seed": 5394
+      },
+      "sha256": "438d83e88d22a10eb8bfe566f276ba8c80b91996670e2eea8a3a313f5d9878c8"
+    },
+    {
+      "id": "modbus_05_test_normal",
+      "protocol": "modbus",
+      "split": "test",
+      "attack": null,
+      "port": 49969,
+      "cycles_per_client": 111,
+      "capture_seconds": 8,
+      "pcap": "modbus_05_test_normal/traffic.pcapng",
+      "events": "modbus_05_test_normal/events.jsonl",
+      "details": {
+        "selected_attacker": null,
+        "ownership": {
+          "master_1": 1,
+          "master_2": 2,
+          "master_3": 3
+        },
+        "monitor": "read-only HR0..HR3",
+        "seed": 5395
+      },
+      "sha256": "6c4eedd4524580375703e3f0e597c857c18ab590a6c1efb03c00c5c61b0768ba"
+    },
+    {
+      "id": "modbus_06_test_illegal_func",
+      "protocol": "modbus",
+      "split": "test",
+      "attack": "illegal_func",
+      "port": 58119,
+      "cycles_per_client": 122,
+      "capture_seconds": 8,
+      "pcap": "modbus_06_test_illegal_func/traffic.pcapng",
+      "events": "modbus_06_test_illegal_func/events.jsonl",
+      "details": {
+        "selected_attacker": "master_2",
+        "ownership": {
+          "master_1": 1,
+          "master_2": 2,
+          "master_3": 3
+        },
+        "monitor": "read-only HR0..HR3",
+        "seed": 5396
+      },
+      "sha256": "82f9d6e5fb26a104b802cd5dd014133f2ed7d51ad2aa0c61ae77f2d9d3edee6d"
+    },
+    {
+      "id": "modbus_07_test_illegal_func",
+      "protocol": "modbus",
+      "split": "test",
+      "attack": "illegal_func",
+      "port": 58124,
+      "cycles_per_client": 126,
+      "capture_seconds": 8,
+      "pcap": "modbus_07_test_illegal_func/traffic.pcapng",
+      "events": "modbus_07_test_illegal_func/events.jsonl",
+      "details": {
+        "selected_attacker": "master_3",
+        "ownership": {
+          "master_1": 1,
+          "master_2": 2,
+          "master_3": 3
+        },
+        "monitor": "read-only HR0..HR3",
+        "seed": 5397
+      },
+      "sha256": "ae08e9af0b302f6d604074072fbf06c79061a1020fb97d14bebec1183a83733f"
+    },
+    {
+      "id": "modbus_08_test_illegal_func",
+      "protocol": "modbus",
+      "split": "test",
+      "attack": "illegal_func",
+      "port": 51528,
+      "cycles_per_client": 128,
+      "capture_seconds": 8,
+      "pcap": "modbus_08_test_illegal_func/traffic.pcapng",
+      "events": "modbus_08_test_illegal_func/events.jsonl",
+      "details": {
+        "selected_attacker": "master_3",
+        "ownership": {
+          "master_1": 1,
+          "master_2": 2,
+          "master_3": 3
+        },
+        "monitor": "read-only HR0..HR3",
+        "seed": 5398
+      },
+      "sha256": "f4bc030860af518acc6080e21e0f7ff1a91d01cf40b32bd07aefddc8998a771d"
+    },
+    {
+      "id": "modbus_09_test_value_jump",
+      "protocol": "modbus",
+      "split": "test",
+      "attack": "value_jump",
+      "port": 51533,
+      "cycles_per_client": 123,
+      "capture_seconds": 8,
+      "pcap": "modbus_09_test_value_jump/traffic.pcapng",
+      "events": "modbus_09_test_value_jump/events.jsonl",
+      "details": {
+        "selected_attacker": "master_2",
+        "ownership": {
+          "master_1": 1,
+          "master_2": 2,
+          "master_3": 3
+        },
+        "monitor": "read-only HR0..HR3",
+        "seed": 5399
+      },
+      "sha256": "97acb601ebcdb18c051ac04cf083fa4d7ef023936176aa301082b2dcae70729d"
+    },
+    {
+      "id": "modbus_10_test_value_jump",
+      "protocol": "modbus",
+      "split": "test",
+      "attack": "value_jump",
+      "port": 64189,
+      "cycles_per_client": 127,
+      "capture_seconds": 8,
+      "pcap": "modbus_10_test_value_jump/traffic.pcapng",
+      "events": "modbus_10_test_value_jump/events.jsonl",
+      "details": {
+        "selected_attacker": "master_3",
+        "ownership": {
+          "master_1": 1,
+          "master_2": 2,
+          "master_3": 3
+        },
+        "monitor": "read-only HR0..HR3",
+        "seed": 5400
+      },
+      "sha256": "392bd5d05e463e35a7921cd7986f7b62e85964a863d70cc54d39ed0dcf3e5d11"
+    },
+    {
+      "id": "modbus_11_test_value_jump",
+      "protocol": "modbus",
+      "split": "test",
+      "attack": "value_jump",
+      "port": 51660,
+      "cycles_per_client": 114,
+      "capture_seconds": 8,
+      "pcap": "modbus_11_test_value_jump/traffic.pcapng",
+      "events": "modbus_11_test_value_jump/events.jsonl",
+      "details": {
+        "selected_attacker": "master_1",
+        "ownership": {
+          "master_1": 1,
+          "master_2": 2,
+          "master_3": 3
+        },
+        "monitor": "read-only HR0..HR3",
+        "seed": 5401
+      },
+      "sha256": "dd5937aac6dce559dc7a2e7d1ab62908eb95972dd4f104704d18e1dfce600b8a"
+    },
+    {
+      "id": "modbus_12_test_write_no_read",
+      "protocol": "modbus",
+      "split": "test",
+      "attack": "write_no_read",
+      "port": 49748,
+      "cycles_per_client": 119,
+      "capture_seconds": 8,
+      "pcap": "modbus_12_test_write_no_read/traffic.pcapng",
+      "events": "modbus_12_test_write_no_read/events.jsonl",
+      "details": {
+        "selected_attacker": "master_2",
+        "ownership": {
+          "master_1": 1,
+          "master_2": 2,
+          "master_3": 3
+        },
+        "monitor": "read-only HR0..HR3",
+        "seed": 5402
+      },
+      "sha256": "8f9e8bfcb0fb6b355fa96c31d7eb9dce76ccc391db4f939ee4a16dec560a4ddd"
+    },
+    {
+      "id": "modbus_13_test_write_no_read",
+      "protocol": "modbus",
+      "split": "test",
+      "attack": "write_no_read",
+      "port": 53131,
+      "cycles_per_client": 130,
+      "capture_seconds": 8,
+      "pcap": "modbus_13_test_write_no_read/traffic.pcapng",
+      "events": "modbus_13_test_write_no_read/events.jsonl",
+      "details": {
+        "selected_attacker": "master_3",
+        "ownership": {
+          "master_1": 1,
+          "master_2": 2,
+          "master_3": 3
+        },
+        "monitor": "read-only HR0..HR3",
+        "seed": 5403
+      },
+      "sha256": "e12c9b099d64045a4fdf49612a4f95d644a7616b0989149a4afa90f599dd83e3"
+    },
+    {
+      "id": "modbus_14_test_write_no_read",
+      "protocol": "modbus",
+      "split": "test",
+      "attack": "write_no_read",
+      "port": 53138,
+      "cycles_per_client": 110,
+      "capture_seconds": 8,
+      "pcap": "modbus_14_test_write_no_read/traffic.pcapng",
+      "events": "modbus_14_test_write_no_read/events.jsonl",
+      "details": {
+        "selected_attacker": "master_1",
+        "ownership": {
+          "master_1": 1,
+          "master_2": 2,
+          "master_3": 3
+        },
+        "monitor": "read-only HR0..HR3",
+        "seed": 5404
+      },
+      "sha256": "cde9df2f6e8dc90afc95526893da9ba6c2aa7b1e9c4010f1d0e6b8161f757628"
+    },
+    {
+      "id": "modbus_15_test_read_flood",
+      "protocol": "modbus",
+      "split": "test",
+      "attack": "read_flood",
+      "port": 59267,
+      "cycles_per_client": 116,
+      "capture_seconds": 8,
+      "pcap": "modbus_15_test_read_flood/traffic.pcapng",
+      "events": "modbus_15_test_read_flood/events.jsonl",
+      "details": {
+        "selected_attacker": "master_2",
+        "ownership": {
+          "master_1": 1,
+          "master_2": 2,
+          "master_3": 3
+        },
+        "monitor": "read-only HR0..HR3",
+        "seed": 5405
+      },
+      "sha256": "fe256850d9ab9c45bfa0f5fa7c69acbc8534d4d1564fa2101b72f0120ad37bf9"
+    },
+    {
+      "id": "modbus_16_test_read_flood",
+      "protocol": "modbus",
+      "split": "test",
+      "attack": "read_flood",
+      "port": 49671,
+      "cycles_per_client": 114,
+      "capture_seconds": 8,
+      "pcap": "modbus_16_test_read_flood/traffic.pcapng",
+      "events": "modbus_16_test_read_flood/events.jsonl",
+      "details": {
+        "selected_attacker": "master_1",
+        "ownership": {
+          "master_1": 1,
+          "master_2": 2,
+          "master_3": 3
+        },
+        "monitor": "read-only HR0..HR3",
+        "seed": 5406
+      },
+      "sha256": "edf366e12f2856155843249e4c755501e61157a1dd964b1ace217c70e74c9bc9"
+    },
+    {
+      "id": "modbus_17_test_read_flood",
+      "protocol": "modbus",
+      "split": "test",
+      "attack": "read_flood",
+      "port": 49678,
+      "cycles_per_client": 125,
+      "capture_seconds": 8,
+      "pcap": "modbus_17_test_read_flood/traffic.pcapng",
+      "events": "modbus_17_test_read_flood/events.jsonl",
+      "details": {
+        "selected_attacker": "master_3",
+        "ownership": {
+          "master_1": 1,
+          "master_2": 2,
+          "master_3": 3
+        },
+        "monitor": "read-only HR0..HR3",
+        "seed": 5407
+      },
+      "sha256": "3706cbf37a2bc10f0cb3434720dae5f886656d7ca948cfb8eeb6c3ae5b940c5e"
+    },
+    {
+      "id": "modbus_18_test_bad_length",
+      "protocol": "modbus",
+      "split": "test",
+      "attack": "bad_length",
+      "port": 49683,
+      "cycles_per_client": 131,
+      "capture_seconds": 8,
+      "pcap": "modbus_18_test_bad_length/traffic.pcapng",
+      "events": "modbus_18_test_bad_length/events.jsonl",
+      "details": {
+        "selected_attacker": "master_3",
+        "ownership": {
+          "master_1": 1,
+          "master_2": 2,
+          "master_3": 3
+        },
+        "monitor": "read-only HR0..HR3",
+        "seed": 5408
+      },
+      "sha256": "94d14402ce0c88227c0b8584290ac52eed8d2dc7071486a4bdb9e21ba553adea"
+    },
+    {
+      "id": "modbus_19_test_bad_length",
+      "protocol": "modbus",
+      "split": "test",
+      "attack": "bad_length",
+      "port": 53173,
+      "cycles_per_client": 122,
+      "capture_seconds": 8,
+      "pcap": "modbus_19_test_bad_length/traffic.pcapng",
+      "events": "modbus_19_test_bad_length/events.jsonl",
+      "details": {
+        "selected_attacker": "master_2",
+        "ownership": {
+          "master_1": 1,
+          "master_2": 2,
+          "master_3": 3
+        },
+        "monitor": "read-only HR0..HR3",
+        "seed": 5409
+      },
+      "sha256": "f439384276dfe83c0d02ad2f1c855e3ba04ce765f46d494c484686a89bc845ed"
+    },
+    {
+      "id": "modbus_20_test_bad_length",
+      "protocol": "modbus",
+      "split": "test",
+      "attack": "bad_length",
+      "port": 64801,
+      "cycles_per_client": 129,
+      "capture_seconds": 8,
+      "pcap": "modbus_20_test_bad_length/traffic.pcapng",
+      "events": "modbus_20_test_bad_length/events.jsonl",
+      "details": {
+        "selected_attacker": "master_3",
+        "ownership": {
+          "master_1": 1,
+          "master_2": 2,
+          "master_3": 3
+        },
+        "monitor": "read-only HR0..HR3",
+        "seed": 5410
+      },
+      "sha256": "43e3460c18145ee7ec11851a960cc72fc009db63fc9094a2e4460f83ff85c124"
+    },
+    {
+      "id": "modbus_21_test_out_of_range",
+      "protocol": "modbus",
+      "split": "test",
+      "attack": "out_of_range",
+      "port": 54718,
+      "cycles_per_client": 109,
+      "capture_seconds": 8,
+      "pcap": "modbus_21_test_out_of_range/traffic.pcapng",
+      "events": "modbus_21_test_out_of_range/events.jsonl",
+      "details": {
+        "selected_attacker": "master_1",
+        "ownership": {
+          "master_1": 1,
+          "master_2": 2,
+          "master_3": 3
+        },
+        "monitor": "read-only HR0..HR3",
+        "seed": 5411
+      },
+      "sha256": "12cd40c3530e060d8a221dcbb5af328e80958086817673e51b552516207b931d"
+    },
+    {
+      "id": "modbus_22_test_out_of_range",
+      "protocol": "modbus",
+      "split": "test",
+      "attack": "out_of_range",
+      "port": 54726,
+      "cycles_per_client": 119,
+      "capture_seconds": 8,
+      "pcap": "modbus_22_test_out_of_range/traffic.pcapng",
+      "events": "modbus_22_test_out_of_range/events.jsonl",
+      "details": {
+        "selected_attacker": "master_2",
+        "ownership": {
+          "master_1": 1,
+          "master_2": 2,
+          "master_3": 3
+        },
+        "monitor": "read-only HR0..HR3",
+        "seed": 5412
+      },
+      "sha256": "aa1c4cc26665c92fc2097cc7d3c168144584168ee747aa4ff56be42947f0d652"
+    },
+    {
+      "id": "modbus_23_test_out_of_range",
+      "protocol": "modbus",
+      "split": "test",
+      "attack": "out_of_range",
+      "port": 54731,
+      "cycles_per_client": 110,
+      "capture_seconds": 8,
+      "pcap": "modbus_23_test_out_of_range/traffic.pcapng",
+      "events": "modbus_23_test_out_of_range/events.jsonl",
+      "details": {
+        "selected_attacker": "master_1",
+        "ownership": {
+          "master_1": 1,
+          "master_2": 2,
+          "master_3": 3
+        },
+        "monitor": "read-only HR0..HR3",
+        "seed": 5413
+      },
+      "sha256": "1fbe1ad48f44d1caded9a710c5879bab1589491207d11129b1e5f133484c14b4"
+    },
+    {
+      "id": "modbus_24_test_replay",
+      "protocol": "modbus",
+      "split": "test",
+      "attack": "replay",
+      "port": 65508,
+      "cycles_per_client": 111,
+      "capture_seconds": 8,
+      "pcap": "modbus_24_test_replay/traffic.pcapng",
+      "events": "modbus_24_test_replay/events.jsonl",
+      "details": {
+        "selected_attacker": "master_1",
+        "ownership": {
+          "master_1": 1,
+          "master_2": 2,
+          "master_3": 3
+        },
+        "monitor": "read-only HR0..HR3",
+        "seed": 5414
+      },
+      "sha256": "be47e2dcf23b08a5899b4f8e38c4ba563f3a890254e45184489a0e82a63e00ed"
+    },
+    {
+      "id": "modbus_25_test_replay",
+      "protocol": "modbus",
+      "split": "test",
+      "attack": "replay",
+      "port": 65513,
+      "cycles_per_client": 115,
+      "capture_seconds": 8,
+      "pcap": "modbus_25_test_replay/traffic.pcapng",
+      "events": "modbus_25_test_replay/events.jsonl",
+      "details": {
+        "selected_attacker": "master_1",
+        "ownership": {
+          "master_1": 1,
+          "master_2": 2,
+          "master_3": 3
+        },
+        "monitor": "read-only HR0..HR3",
+        "seed": 5415
+      },
+      "sha256": "68544ae086b243a3ac0f9b9290d1aa3cccfb122c05e6cc3ca530449ec1ed10a4"
+    },
+    {
+      "id": "modbus_26_test_replay",
+      "protocol": "modbus",
+      "split": "test",
+      "attack": "replay",
+      "port": 53943,
+      "cycles_per_client": 122,
+      "capture_seconds": 8,
+      "pcap": "modbus_26_test_replay/traffic.pcapng",
+      "events": "modbus_26_test_replay/events.jsonl",
+      "details": {
+        "selected_attacker": "master_2",
+        "ownership": {
+          "master_1": 1,
+          "master_2": 2,
+          "master_3": 3
+        },
+        "monitor": "read-only HR0..HR3",
+        "seed": 5416
+      },
+      "sha256": "5056b70bb120b70cc216515974df8ac228dd00ae8694e87d5595c6ab6b7d3bb8"
+    }
+  ],
+  "protocol_units": {
+    "modbus": "MBAP application request",
+    "opcua": "UA TCP chunk"
+  },
+  "roles": {
+    "masters": 3,
+    "monitor": 1
+  },
+  "complete": false,
+  "seeds_per_attack": 3,
+  "expected_runs": {
+    "modbus": 27,
+    "opcua": 21
+  }
+}

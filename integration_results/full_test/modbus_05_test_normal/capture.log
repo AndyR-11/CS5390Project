@@ -1,0 +1,21 @@
+Capturing on 'Adapter for loopback traffic capture'
+File: C:\CS5390Project\integration_results\full_test\modbus_05_test_normal\traffic.pcapng
+
+Packets: 1
+Packets: 141
+Packets: 319
+Packets: 495
+Packets: 673
+Packets: 825
+Packets: 1001
+Packets: 1178
+Packets: 1352
+Packets: 1526
+Packets: 1703
+Packets: 1874
+Packets: 2042
+Packets: 2210
+Packets: 2366
+Packets: 2377
+Packets captured: 2377
+Packets received/dropped on interface 'Adapter for loopback traffic capture': 2377/0 (pcap:0/dumpcap:0/flushed:0/ps_ifdrop:0) (100.0%)

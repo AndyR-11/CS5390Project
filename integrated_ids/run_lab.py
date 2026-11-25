@@ -29,24 +29,34 @@ def main():
     parser.add_argument('--seed', type=int, default=5390)
     parser.add_argument('--capture-seconds', type=int, default=8)
     parser.add_argument('--cycles', type=int, default=120)
+    parser.add_argument('--seeds-per-attack', type=int, default=3,
+                         help='independent randomized instances per attack type, '
+                              'so recall per attack type is a real fraction, not n=1')
     args = parser.parse_args()
     out = Path(args.out).resolve()
     if out.exists():
         raise SystemExit('Use a new output directory to preserve prior experiments')
     out.mkdir(parents=True)
+    modbus_attacks = ['illegal_func', 'value_jump', 'write_no_read', 'read_flood',
+                        'out_of_range', 'replay']
+    opcua_attacks = ['invalid_node', 'value_jump', 'write_no_read', 'read_flood', 'session_flood']
+    attacks_per_protocol = {'modbus': modbus_attacks, 'opcua': opcua_attacks}
     manifest = {'seed': args.seed, 'capture_method': 'dumpcap Npcap loopback; real socket traffic',
                 'runs': [], 'protocol_units': {'modbus': 'MBAP application request', 'opcua': 'UA TCP chunk'},
                 'roles': {'masters': 3, 'monitor': 1}, 'complete': False,
-                'expected_runs': 20 if args.protocol == 'both' else 10}
+                'seeds_per_attack': args.seeds_per_attack,
+                'expected_runs': sum(6 + len(attacks_per_protocol[p])*args.seeds_per_attack
+                                     for p in (['modbus', 'opcua'] if args.protocol == 'both' else [args.protocol]))}
     (out/'manifest.json').write_text(json.dumps(manifest, indent=2))
     protocols = ['modbus', 'opcua'] if args.protocol == 'both' else [args.protocol]
     logging.getLogger('asyncua').setLevel(logging.ERROR)
     for protocol in protocols:
         schedule = [('train', None), ('train', None), ('validation', None),
                     ('validation', None), ('test', None), ('test', None)]
-        schedule += [('test', attack) for attack in
-                     ['illegal_func' if protocol == 'modbus' else 'invalid_node',
-                      'value_jump', 'write_no_read', 'read_flood']]
+        # Several independent, randomized instances per attack type instead
+        # of one -- recall per attack type is then a real fraction.
+        for attack in attacks_per_protocol[protocol]:
+            schedule += [('test', attack)] * args.seeds_per_attack
         for ordinal, (split, attack) in enumerate(schedule):
             run_id = f'{protocol}_{ordinal:02d}_{split}_{attack or "normal"}'
             folder = out/run_id
@@ -58,7 +68,7 @@ def main():
             seed = args.seed+ordinal
             cycles = max(12, args.cycles+random.Random(seed).randint(-12, 12))
             command = [args.dumpcap, '-i', args.interface, '-f', f'tcp port {port}',
-                       '-a', f'duration:{args.capture_seconds}', '-w', str(capture)]
+                        '-a', f'duration:{max(args.capture_seconds, 120)}', '-w', str(capture)]
             print(f'Capturing {run_id} on loopback port {port}', flush=True)
             try:
                 with (folder/'capture.log').open('w') as log:
@@ -76,8 +86,12 @@ def main():
                         else:
                             details = asyncio.run(run_opc(port, server.server_address[1], events, seed, attack, cycles=cycles))
                         events.save(folder/'events.jsonl')
-                        if recorder.wait(timeout=args.capture_seconds+5) != 0:
-                            raise RuntimeError('Capture failed; see capture.log')
+                        time.sleep(.5)  # grace period: let trailing response packets land
+                        early_exit = recorder.poll()
+                        if early_exit is not None:
+                            raise RuntimeError(f'Capture process exited early (code {early_exit}); see capture.log')
+                        recorder.terminate()
+                        recorder.wait(timeout=10)
                     finally:
                         if recorder.poll() is None:
                             recorder.terminate()

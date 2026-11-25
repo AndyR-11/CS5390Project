@@ -25,11 +25,15 @@ def run_chain(messages, clusterer_kwargs=None):
             results['unassigned'] = {'count': len(group)}
             continue
         raws = [m['raw'] for m in group]
+        # Present for real captures (load_capture attaches it); absent for the
+        # older raw-payload-only loader. Per-connection counter checking is
+        # only possible when we know which connection each message came from.
+        sessions = [tuple(m['session']) for m in group] if 'session' in group[0] else None
         fields, variability = infer_boundaries(raws)
         fields = merge_fields(raws, fields)
         results[str(cluster_id)] = {
             'count': len(group), 'length': len(raws[0]),
-            'schema': assign_roles(raws, fields),
+            'schema': assign_roles(raws, fields, sessions=sessions),
             'byte_variability': variability,
         }
     return {'t1': model.describe(), 't2_per_cluster': results}, model
