@@ -63,6 +63,3 @@ Add randomized multi-attack lab and fix multi-master evaluation gaps
 - test_pipeline.py: updated the ambiguous-duplicate test to assert
   the new send-order resolution behavior; added a separate test for
   the still-ambiguous out-of-tolerance case.
-
-Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
-Claude-Session: https://claude.ai/code/session_01CoZEJ5HVgm7Jz724hJzsra
