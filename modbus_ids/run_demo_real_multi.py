@@ -1,5 +1,5 @@
 """
-Runs ALL THREE detectors (structure, stats, behavioral) against your
+Runs ALL THREE detectors (structure, stats, behavioral) against our
 real lab captures -- one pcap per attack type, as recommended, plus a
 clean normal-only pcap.
 

@@ -39,6 +39,38 @@ def _field_value(raw, offset, length):
     return int.from_bytes(raw[offset:offset + length], "big")
 
 
+def _is_counter_per_connection(values, sessions, length, min_fraction=0.9):
+    """assign_roles()'s counter check looks at ONE pooled arrival-order
+    sequence. That's correct for a single sender, but once a cluster
+    mixes messages from several independent connections (e.g. 3 masters
+    + a monitor all issuing reads that land in the same T1 cluster),
+    each connection has its own independent counter -- interleaving them
+    by wall-clock arrival produces a sequence that looks nothing like a
+    counter (e.g. 206, 155, 165, 99, 101, 207, ...), even though each
+    connection's OWN sub-sequence is perfectly monotonic. assign_roles
+    then calls the field "variable" instead of "counter", which is the
+    actual root cause behind the multi-master behavioral detector's
+    100% false-positive rate: a mislabeled counter field makes
+    build_generic_profile() think the field is "write-like" data, which
+    marks clusters that are really just reads as write-like too.
+
+    This re-checks per CONNECTION (session) instead of pooled, and is
+    width-aware (wrap = a big-to-small drop near this field's own max
+    value, not a hardcoded 16-bit assumption) since this field might be
+    1 byte, not 2."""
+    max_value = (1 << (8 * length)) - 1
+    by_session = {}
+    for value, session in zip(values, sessions):
+        by_session.setdefault(session, []).append(value)
+    ok = total = 0
+    for seq in by_session.values():
+        for a, b in zip(seq, seq[1:]):
+            total += 1
+            if b >= a or (a - b) > max_value * 0.9:
+                ok += 1
+    return total > 0 and (ok / total) >= min_fraction
+
+
 class GenericProfile:
     def __init__(self):
         self.clusterer = None
@@ -64,9 +96,19 @@ def build_generic_profile(train_messages, min_cluster_size=8):
         if cluster_id == -1 or len(group) < min_cluster_size:
             continue
         raws = [m["raw"] for m in group]
+        sessions = [tuple(m["session"]) for m in group]
         fields, _variability = infer_boundaries(raws)
         fields = merge_fields(raws, fields)
         schema = assign_roles(raws, fields)
+
+        # Correct a counter field that assign_roles missed because this
+        # cluster pools several connections (see _is_counter_per_connection).
+        for f in schema:
+            if f["role"] in ("variable", "low_variability"):
+                vals = [_field_value(r, f["offset"], f["len"]) for r in raws]
+                if _is_counter_per_connection(vals, sessions, f["len"]):
+                    f["role"] = "counter"
+
         profile.schemas[cluster_id] = schema
 
         field_profile = {}
