@@ -1,0 +1,10 @@
+Capturing on 'Adapter for loopback traffic capture'
+File: C:\Users\rente\.codex\.chatgpt-projects\g-p-6a8dd18700c0819186d1a89343a00353\CS5390Project-integration\integration_results\multimaster_20261118\modbus_06_test_write_no_read\traffic.pcapng
+
+Packets: 1
+Packets: 193
+Packets: 385
+Packets: 596
+Packets: 807
+Packets captured: 807
+Packets received/dropped on interface 'Adapter for loopback traffic capture': 807/0 (pcap:0/dumpcap:0/flushed:0/ps_ifdrop:0) (100.0%)

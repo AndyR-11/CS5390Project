@@ -1,0 +1,16 @@
+modbus_ids/normal_traffic.pcapng: loaded 1982 messages
+Total pooled messages: 1982
+
+--- T1 clusters -> T2 schemas ---
+
+cluster 0: count=1798 len=12..12
+  offset=0   len=2  role=counter          name=field_0
+  offset=2   len=10 role=constant         name=field_1
+  boundary score vs ground truth (SCORING ONLY, not used in inference): precision=1.00 recall=0.40 f1=0.57
+
+cluster 1: count=184 len=12..12
+  offset=0   len=2  role=counter          name=field_0
+  offset=2   len=10 role=variable         name=field_1
+  boundary score vs ground truth (SCORING ONLY, not used in inference): precision=1.00 recall=0.40 f1=0.57
+
+Wrote integration_results/modbus_existing_chain.json

@@ -1,0 +1,101 @@
+{
+  "t1": {
+    "method": "length + learned low-entropy categorical byte signature",
+    "parameters": {
+      "max_values": 16,
+      "max_entropy": 1.5,
+      "min_samples": 8
+    },
+    "offsets_by_length": {
+      "12": [
+        7,
+        9,
+        10,
+        11
+      ]
+    },
+    "clusters": [
+      {
+        "id": 0,
+        "length": 12,
+        "signature": [
+          3,
+          0,
+          0,
+          4
+        ]
+      }
+    ],
+    "unknown_id": -1
+  },
+  "t2_per_cluster": {
+    "unassigned": {
+      "count": 72
+    },
+    "0": {
+      "count": 288,
+      "length": 12,
+      "schema": [
+        {
+          "name": "field_0",
+          "offset": 0,
+          "len": 1,
+          "role": "low_variability"
+        },
+        {
+          "name": "field_1",
+          "offset": 1,
+          "len": 1,
+          "role": "variable"
+        },
+        {
+          "name": "field_2",
+          "offset": 2,
+          "len": 10,
+          "role": "constant"
+        }
+      ],
+      "byte_variability": [
+        0.017361111111111112,
+        0.375,
+        0.003472222222222222,
+        0.003472222222222222,
+        0.003472222222222222,
+        0.003472222222222222,
+        0.003472222222222222,
+        0.003472222222222222,
+        0.003472222222222222,
+        0.003472222222222222,
+        0.003472222222222222,
+        0.003472222222222222
+      ]
+    }
+  },
+  "field_profiles": {
+    "0": [
+      {
+        "name": "field_0",
+        "offset": 0,
+        "len": 1,
+        "role": "low_variability",
+        "min": 15,
+        "max": 66
+      },
+      {
+        "name": "field_1",
+        "offset": 1,
+        "len": 1,
+        "role": "variable",
+        "min": 52,
+        "max": 173
+      },
+      {
+        "name": "field_2",
+        "offset": 2,
+        "len": 10,
+        "role": "constant",
+        "expected_hex": "00000006010300000004"
+      }
+    ]
+  }
+}

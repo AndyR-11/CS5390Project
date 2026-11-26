@@ -1,0 +1,20 @@
+{
+  "python": "3.12.5 (tags/v3.12.5:ff3bc82, Aug  6 2024, 20:45:27) [MSC v.1940 64 bit (AMD64)]",
+  "base_commit": "54d0f97c87c7b19a0823dfa0e6940bd09c1004c6",
+  "source_sha256": {
+    "integrated_ids/behavior.py": "9cca64787d4a02d5857d6398d414b768f57e710844b7cb85f8ef035eebd45ff1",
+    "integrated_ids/detection.py": "c7d61c67b023f5c10ce4ad305b660a8f66101b4fe36887b08c44566c23e44d10",
+    "integrated_ids/evaluate.py": "5f3c22aa4b8fcb99ed1f9c79357f7fe4ab4e616c4822d4ec97f00b80cdfe0c70",
+    "integrated_ids/lab.py": "6f1ae452cd24f64a8cb07c8791e2c1ed7a91743d907c99ce983fb55adc7c443c",
+    "integrated_ids/run_lab.py": "0b8033c26bfff8b517fcc09d4dcc959463bd8450d8e5acfe1734b3c2c531d421",
+    "integrated_ids/streams.py": "2d46d7c1251b79b400250ed928dee2a3f249abe1df4b39b0b4774851e456bbd4",
+    "integrated_ids/test_pipeline.py": "7830ad57f0cf136fc3625325fe03e52131f87e8441f22cea9db293837e066231",
+    "integrated_ids/__init__.py": "e2911da014db515b68123bc4a06c443459e6f72b1dabf2e9d0412e9dd86ba76a",
+    "paola_t1/clustering.py": "77f87ac1a312d2a1e1aad5220ea9272ffb1735fc060fb861e722d31bf0ae4f1d",
+    "modbus_ids/infer_boundaries.py": "293e1f6adf9d79b4ed0919fabee513a33974ee603e830908a2fb4ca1b3925cbb",
+    "modbus_ids/infer_merge.py": "ad6ca42aeb21ca18cb7dc44a483f61a5a3b22035376a1b4aa83b9fcd3fa4996c",
+    "modbus_ids/infer_roles.py": "3ad0c6786df2eeff98dc468b34dc0b266dae5109d40166b1a52df2614a4def31",
+    "opcua_ids/chain_t1_t2.py": "456d82b2daf545ac8154f469ffe9c16eaef94aa531670049c151f09a4651b217"
+  },
+  "manifest_sha256": "8b25d7c6909472a181eea97f8f0ea53646b0c770617f3062116a8719382e7c33"
+}

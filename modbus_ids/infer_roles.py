@@ -23,7 +23,10 @@ file.
 
 import json
 
-from infer_merge import _is_monotonic_merge
+if __package__:
+    from .infer_merge import _is_monotonic_merge
+else:
+    from infer_merge import _is_monotonic_merge
 
 
 def _distinct_count(values):
